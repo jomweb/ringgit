@@ -156,6 +156,16 @@ trait Vat
     }
 
     /**
+     * Get absolute value.
+     *
+     * @return string
+     */
+    public function amountWithVat()
+    {
+        return $this->getFormatter()->format(static::asMoney($this->getAmountWithVat()));
+    }
+
+    /**
      * Get the money object.
      *
      * @return \Money\Money
@@ -170,4 +180,11 @@ trait Vat
      * @return \Money\Money
      */
     abstract protected static function asMoney($amount);
+
+    /**
+     * Get money formatter.
+     *
+     * @return \Money\Formatter\IntlMoneyFormatter
+     */
+    abstract protected function getFormatter();
 }

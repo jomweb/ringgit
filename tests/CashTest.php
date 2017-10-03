@@ -6,6 +6,14 @@ use PHPUnit\Framework\TestCase;
 class CashTest extends TestCase
 {
     /** @test */
+    public function it_can_display_proper_amount()
+    {
+        $money = MYR::withoutVat(1045);
+
+        $this->assertSame('10.45', $money->amount());
+    }
+
+    /** @test */
     public function it_can_be_converted_to_supported_cash_value()
     {
         $this->assertSame('500', MYR::withoutVat('501')->getCashAmount());

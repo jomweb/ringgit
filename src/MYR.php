@@ -5,6 +5,8 @@ namespace Duit;
 use Money\Money;
 use Money\Currency;
 use BadMethodCallException;
+use Money\Currencies\ISOCurrencies;
+use Money\Formatter\DecimalMoneyFormatter;
 
 class MYR implements Contracts\Money
 {
@@ -16,6 +18,13 @@ class MYR implements Contracts\Money
      * @var \Money\Money
      */
     protected $money;
+
+    /**
+     * Money formatter.
+     *
+     * @var \Money\Formatter\IntlMoneyFormatter
+     */
+    protected static $formatter;
 
     /**
      * Construct a new MYR money.
@@ -107,5 +116,21 @@ class MYR implements Contracts\Money
     protected function resolveMoneyObject($money)
     {
         return $money instanceof Contracts\Money ? $money->getMoney() : $money;
+    }
+
+    /**
+     * Get money formatter.
+     *
+     * @return \Money\Formatter\IntlMoneyFormatter
+     */
+    protected function getFormatter()
+    {
+        if (is_null(static::$formatter)) {
+            static::$formatter = new DecimalMoneyFormatter(
+                new ISOCurrencies()
+            );
+        }
+
+        return static::$formatter;
     }
 }

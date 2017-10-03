@@ -7,6 +7,16 @@ use Money\Number;
 trait Cash
 {
     /**
+     * Get absolute value.
+     *
+     * @return string
+     */
+    public function amount()
+    {
+        return $this->getFormatter()->format($this->getMoney());
+    }
+
+    /**
      * Get amount for cash.
      *
      * @return string
@@ -40,9 +50,9 @@ trait Cash
     }
 
     /**
-     * Get the money object.
+     * Get money formatter.
      *
-     * @return \Money\Money
+     * @return \Money\Formatter\IntlMoneyFormatter
      */
-    abstract public function getMoney();
+    abstract protected function getFormatter();
 }

@@ -15,6 +15,15 @@ class VatTest extends TestCase
     }
 
     /** @test */
+    public function it_can_display_proper_amount_with_vat()
+    {
+        $money = MYR::beforeVat(1045);
+
+        $this->assertSame('10.45', $money->amount());
+        $this->assertSame('11.08', $money->amountWithVat());
+    }
+
+    /** @test */
     public function it_can_be_declared_with_vat()
     {
         $money = MYR::beforeVat(500);
