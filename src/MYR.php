@@ -28,9 +28,10 @@ class MYR
     }
 
     /**
-     * Build money object
+     * Build money object.
      *
      * @param  int|string  $amount
+     *
      * @return \Money\Money
      */
     protected static function asMoney($amount)
@@ -43,8 +44,10 @@ class MYR
      *
      * @param  string  $method
      * @param  array  $parameters
+     *
+     * @throws \BadMethodException if method doesn't exist
+     *
      * @return mixed
-     * @throws \BadMethodException If method doesn't exist.
      */
     public function __call($method, array $parameters)
     {

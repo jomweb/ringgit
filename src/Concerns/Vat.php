@@ -15,6 +15,7 @@ trait Vat
      * Make object with GST/VAT.
      *
      * @param int|string $amount
+     *
      * @return static
      */
     public static function afterVat($amount)
@@ -28,6 +29,7 @@ trait Vat
      * Make object without GST/VAT.
      *
      * @param int|string $amount
+     *
      * @return static
      */
     public static function withoutVat($amount)
@@ -39,8 +41,9 @@ trait Vat
      * Make object before applying GST/VAT.
      *
      * @param int|string $amount
-     * @return static
      * @param  [type] $amount [description]
+     *
+     * @return static
      * @return [type]         [description]
      */
     public static function beforeVat($amount)
@@ -104,6 +107,7 @@ trait Vat
      * Allocate the money according to a list of ratios with GST/VAT.
      *
      * @param  array  $ratios
+     *
      * @return Money[]
      */
     public function allocateWithVat(array $ratios)
@@ -122,9 +126,10 @@ trait Vat
      * Allocate the money among N targets with GST/VAT.
      *
      * @param  int  $n
-     * @return Money[]
      *
      * @throws \InvalidArgumentException If number of targets is not an integer
+     *
+     * @return Money[]
      */
     public function allocateWithVatTo($n)
     {
@@ -139,9 +144,10 @@ trait Vat
     }
 
     /**
-     * Build money object
+     * Build money object.
      *
      * @param  int|string  $amount
+     *
      * @return \Money\Money
      */
     abstract protected static function asMoney($amount);
