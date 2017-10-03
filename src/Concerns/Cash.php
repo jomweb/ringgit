@@ -7,6 +7,18 @@ use Money\Number;
 trait Cash
 {
     /**
+     * Get amount for cash.
+     *
+     * @return string
+     */
+    public function getCashAmount()
+    {
+        return (string) $this->getClosestAcceptedCashAmount(
+            $this->getMoney()->getAmount()
+        );
+    }
+
+    /**
      * Get closest accepted cash amount.
      *
      * @param  int|string  $amount
@@ -26,4 +38,11 @@ trait Cash
 
         return $value;
     }
+
+    /**
+     * Get the money object.
+     *
+     * @return \Money\Money
+     */
+    abstract public function getMoney();
 }

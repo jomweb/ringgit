@@ -6,7 +6,7 @@ use Money\Money;
 use Money\Currency;
 use BadMethodCallException;
 
-class MYR
+class MYR implements Contracts\Money
 {
     use Concerns\Vat;
 
@@ -28,27 +28,25 @@ class MYR
     }
 
     /**
-     * Build money object.
+     * Create new instance from money object.
      *
      * @param  int|string  $amount
      *
-     * @return \Money\Money
+     * @return static
      */
-    protected static function asMoney($amount)
+    public function newInstance($amount)
     {
-        return new Money($amount, new Currency('MYR'));
+        return new static($amount);
     }
 
     /**
-     * Get amount for cash.
+     * Get the money implementation.
      *
-     * @return string
+     * @return \Money\Money
      */
-    public function getCashAmount()
+    public function getMoney()
     {
-        return (string) $this->getClosestAcceptedCashAmount(
-            $this->getAmount()
-        );
+        return $this->money;
     }
 
     /**
@@ -67,6 +65,46 @@ class MYR
             throw new BadMethodCallException("Method [{$method}] is not available.");
         }
 
-        return call_user_func_array([$this->money, $method], $parameters);
+        $passthrough = [
+            'add', 'subtract', 'equals', 'isSameCurrency',
+            'lessThan', 'lessThanOrEqual', 'greaterThanOrEqual', 'greaterThan',
+        ];
+
+        if (in_array($method, $passthrough)) {
+            $first = array_shift($parameters);
+
+            return $this->newInstance(
+                call_user_func(
+                    [$this->money, $method],
+                    $this->resolveMoneyObject($first),
+                    ...$parameters
+                )
+            );
+        }
+
+        return call_user_func([$this->money, $method], ...$parameters);
+    }
+
+    /**
+     * Build money object.
+     *
+     * @param  int|string  $amount
+     *
+     * @return \Money\Money
+     */
+    protected static function asMoney($amount)
+    {
+        return new Money($amount, new Currency('MYR'));
+    }
+
+    /**
+     * Resolve money object.
+     *
+     * @param  \Money\Money|Duit\Contracts\Money  $money
+     * @return \Money\Money
+     */
+    protected function resolveMoneyObject($money)
+    {
+        return $money instanceof Contracts\Money ? $money->getMoney() : $money;
     }
 }

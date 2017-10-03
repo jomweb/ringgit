@@ -86,7 +86,7 @@ trait Vat
             return '0';
         }
 
-        return $this->multiply(0.06)->getAmount();
+        return $this->getMoney()->multiply(0.06)->getAmount();
     }
 
     /**
@@ -97,10 +97,10 @@ trait Vat
     public function getAmountWithVat()
     {
         if (! $this->vat) {
-            return $this->getAmount();
+            return $this->getMoney()->getAmount();
         }
 
-        return $this->multiply(1.06)->getAmount();
+        return $this->getMoney()->multiply(1.06)->getAmount();
     }
 
     /**
@@ -154,6 +154,13 @@ trait Vat
 
         return $results;
     }
+
+    /**
+     * Get the money object.
+     *
+     * @return \Money\Money
+     */
+    abstract public function getMoney();
 
     /**
      * Build money object.
