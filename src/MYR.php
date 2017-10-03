@@ -101,6 +101,7 @@ class MYR implements Contracts\Money
      * Resolve money object.
      *
      * @param  \Money\Money|Duit\Contracts\Money  $money
+     *
      * @return \Money\Money
      */
     protected function resolveMoneyObject($money)
