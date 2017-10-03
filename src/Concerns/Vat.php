@@ -41,10 +41,8 @@ trait Vat
      * Make object before applying GST/VAT.
      *
      * @param int|string $amount
-     * @param  [type] $amount [description]
      *
      * @return static
-     * @return [type]         [description]
      */
     public static function beforeVat($amount)
     {
