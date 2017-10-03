@@ -10,9 +10,9 @@
         }
     ],
     "autoload": {
-        "classmap": [
-            "src/MYR.php"
-        ]
+        "psr-4": {
+            "Duit\\": "src/"
+        }
     },
     "require": {
         "moneyphp/money": "^3.0"

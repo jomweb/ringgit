@@ -1,7 +1,9 @@
 <?php
 
-namespace Money;
+namespace Duit;
 
+use Money\Money;
+use Money\Currency;
 use BadMethodCallException;
 
 class MYR
@@ -139,6 +141,7 @@ class MYR
 
         return $results;
     }
+
     /**
      * Allocate the money among N targets with GST/VAT.
      *

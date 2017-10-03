@@ -1,6 +1,6 @@
 <?php
 
-use Money\MYR;
+use Duit\MYR;
 use PHPUnit\Framework\TestCase;
 
 class RinggitTest extends TestCase
