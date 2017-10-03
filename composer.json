@@ -15,6 +15,7 @@
         }
     },
     "require": {
+        "php": ">=7.0",
         "moneyphp/money": "^3.0"
     },
     "require-dev": {
