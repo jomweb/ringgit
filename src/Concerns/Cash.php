@@ -21,7 +21,7 @@ trait Cash
      *
      * @return string
      */
-    public function cash()
+    public function cashAmount()
     {
         return $this->getFormatter()->format(
             $this->newInstance($this->getCashAmount())

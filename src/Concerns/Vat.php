@@ -68,10 +68,10 @@ trait Vat
      *
      * @return string
      */
-    public function cashWithVat()
+    public function cashAmountWithVat()
     {
         return $this->getFormatter()->format(
-            $this->newInstance($this->getCashAmount())
+            static::asMoney($this->getCashAmountWithVat())
         );
     }
 
