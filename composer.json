@@ -9,6 +9,11 @@
             "email": "crynobone@gmail.com"
         }
     ],
+    "autoload": {
+        "classmap": [
+            "src/MYR.php"
+        ]
+    },
     "require": {
         "moneyphp/money": "^3.0"
     },
