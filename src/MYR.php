@@ -31,11 +31,50 @@ class MYR
     }
 
     /**
+     * Make object with GST/VAT.
+     *
+     * @param int|string $amount
+     * @return static
+     */
+    public static function afterVat($amount)
+    {
+        $money = new Money($amount, new Currency('MYR'));
+
+        return (new static($money->divide(1.06)->getAmount()))->enableVat();
+    }
+
+    /**
+     * Make object without GST/VAT.
+     *
+     * @param int|string $amount
+     * @return static
+     */
+    public static function withoutVat($amount)
+    {
+        return new static($amount);
+    }
+
+    /**
+     * Make object before applying GST/VAT.
+     *
+     * @param int|string $amount
+     * @return static
+     * @param  [type] $amount [description]
+     * @return [type]         [description]
+     */
+    public static function beforeVat($amount)
+    {
+        $money = new Money($amount, new Currency('MYR'));
+
+        return (new static($amount))->enableVat();
+    }
+
+    /**
      * Enable GST/VAT for calculation.
      *
      * @return $this
      */
-    public function withVat()
+    public function enableVat()
     {
         $this->vat = true;
 
@@ -47,7 +86,7 @@ class MYR
      *
      * @return $this
      */
-    public function withoutVat()
+    public function disableVat()
     {
         $this->vat = false;
 
@@ -90,8 +129,15 @@ class MYR
      */
     public function allocateWithVat(array $ratios)
     {
-        return (new Money($this->getAmountWithVat(), new Currency('MYR')))
-                    ->allocate($ratios);
+        $results = [];
+        $allocates = (new Money($this->getAmountWithVat(), new Currency('MYR')))
+                            ->allocate($ratios);
+
+        foreach ($allocates as $allocate) {
+            $results[] = static::afterVat($allocate->getAmount());
+        }
+
+        return $results;
     }
     /**
      * Allocate the money among N targets with GST/VAT.
@@ -103,8 +149,15 @@ class MYR
      */
     public function allocateWithVatTo($n)
     {
-        return (new Money($this->getAmountWithVat(), new Currency('MYR')))
-                    ->allocateTo($n);
+        $results = [];
+        $allocates = (new Money($this->getAmountWithVat(), new Currency('MYR')))
+                            ->allocateTo($n);
+
+        foreach ($allocates as $allocate) {
+            $results[] = static::afterVat($allocate->getAmount());
+        }
+
+        return $results;
     }
 
     public function __call($method, array $parameters)
