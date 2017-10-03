@@ -28,6 +28,44 @@ class MYR
     }
 
     /**
+     * Make object with GST/VAT.
+     *
+     * @param int|string $amount
+     *
+     * @return static
+     */
+    public static function afterVat($amount)
+    {
+        return static::beforeVat(
+            static::asMoney($amount)->divide(1.06)->getAmount()
+        );
+    }
+
+    /**
+     * Make object without GST/VAT.
+     *
+     * @param int|string $amount
+     *
+     * @return static
+     */
+    public static function withoutVat($amount)
+    {
+        return (new static($amount))->disableVat();
+    }
+
+    /**
+     * Make object before applying GST/VAT.
+     *
+     * @param int|string $amount
+     *
+     * @return static
+     */
+    public static function beforeVat($amount)
+    {
+        return (new static($amount))->enableVat();
+    }
+
+    /**
      * Build money object.
      *
      * @param  int|string  $amount
