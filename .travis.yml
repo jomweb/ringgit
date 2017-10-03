@@ -6,7 +6,6 @@ php:
   - 7.0
   - 7.1
   - 7.2
-  - hhvm
 
 env:
   global:
@@ -36,6 +35,5 @@ matrix:
     - php: 7.0
       env: setup=coveralls coverage=yes
   allow_failures:
-    - env: setup=lowest
     - env: setup=coveralls coverage=yes
   fast_finish: true
