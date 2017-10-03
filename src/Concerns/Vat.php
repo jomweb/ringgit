@@ -52,6 +52,30 @@ trait Vat
     }
 
     /**
+     * Get formatted amount with GST/VAT.
+     *
+     * @return string
+     */
+    public function amountWithVat()
+    {
+        return $this->getFormatter()->format(
+            static::asMoney($this->getAmountWithVat())
+        );
+    }
+
+    /**
+     * Get formatted cash with GST/VAT.
+     *
+     * @return string
+     */
+    public function cashWithVat()
+    {
+        return $this->getFormatter()->format(
+            $this->newInstance($this->getCashAmount())
+        );
+    }
+
+    /**
      * Enable GST/VAT for calculation.
      *
      * @return $this
@@ -153,16 +177,6 @@ trait Vat
         }
 
         return $results;
-    }
-
-    /**
-     * Get absolute value.
-     *
-     * @return string
-     */
-    public function amountWithVat()
-    {
-        return $this->getFormatter()->format(static::asMoney($this->getAmountWithVat()));
     }
 
     /**

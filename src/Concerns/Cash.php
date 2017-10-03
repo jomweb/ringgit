@@ -7,13 +7,25 @@ use Money\Number;
 trait Cash
 {
     /**
-     * Get absolute value.
+     * Get formatted amount.
      *
      * @return string
      */
     public function amount()
     {
         return $this->getFormatter()->format($this->getMoney());
+    }
+
+    /**
+     * Get formatted cash.
+     *
+     * @return string
+     */
+    public function cash()
+    {
+        return $this->getFormatter()->format(
+            $this->newInstance($this->getCashAmount())
+        );
     }
 
     /**
