@@ -4,12 +4,52 @@ namespace Duit\Concerns;
 
 trait Vat
 {
+    use Cash;
+
     /**
      * Enable GST/VAL calculation.
      *
      * @var bool
      */
     protected $vat = false;
+
+    /**
+     * Make object with GST/VAT.
+     *
+     * @param int|string $amount
+     *
+     * @return static
+     */
+    public static function afterVat($amount)
+    {
+        return static::beforeVat(
+            static::asMoney($amount)->divide(1.06)->getAmount()
+        );
+    }
+
+    /**
+     * Make object without GST/VAT.
+     *
+     * @param int|string $amount
+     *
+     * @return static
+     */
+    public static function withoutVat($amount)
+    {
+        return (new static($amount))->disableVat();
+    }
+
+    /**
+     * Make object before applying GST/VAT.
+     *
+     * @param int|string $amount
+     *
+     * @return static
+     */
+    public static function beforeVat($amount)
+    {
+        return (new static($amount))->enableVat();
+    }
 
     /**
      * Enable GST/VAT for calculation.
@@ -46,7 +86,7 @@ trait Vat
             return '0';
         }
 
-        return $this->money->multiply(0.06)->getAmount();
+        return $this->multiply(0.06)->getAmount();
     }
 
     /**
@@ -57,10 +97,22 @@ trait Vat
     public function getAmountWithVat()
     {
         if (! $this->vat) {
-            return $this->money->getAmount();
+            return $this->getAmount();
         }
 
-        return $this->money->multiply(1.06)->getAmount();
+        return $this->multiply(1.06)->getAmount();
+    }
+
+    /**
+     * Get amount for cash with GST/VAT.
+     *
+     * @return string
+     */
+    public function getCashAmountWithVat()
+    {
+        return (string) $this->getClosestAcceptedCashAmount(
+            $this->getAmountWithVat()
+        );
     }
 
     /**
