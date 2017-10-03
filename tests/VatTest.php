@@ -3,7 +3,7 @@
 use Duit\MYR;
 use PHPUnit\Framework\TestCase;
 
-class RinggitTest extends TestCase
+class VatTest extends TestCase
 {
     /** @test */
     public function it_can_be_declared_without_vat_as_default()
@@ -72,21 +72,5 @@ class RinggitTest extends TestCase
         $this->assertSame('500', $money->getAmount());
         $this->assertSame('30', $money->getVatAmount());
         $this->assertSame('530', $money->getAmountWithVat());
-    }
-
-    /** @test */
-    public function it_can_be_converted_to_supported_cash_value()
-    {
-        $this->assertSame('500', MYR::withoutVat('501')->getCashAmount());
-        $this->assertSame('500', MYR::withoutVat('502')->getCashAmount());
-        $this->assertSame('505', MYR::withoutVat('503')->getCashAmount());
-        $this->assertSame('505', MYR::withoutVat('504')->getCashAmount());
-        $this->assertSame('505', MYR::withoutVat('505')->getCashAmount());
-
-        $this->assertSame('505', MYR::withoutVat('506')->getCashAmount());
-        $this->assertSame('505', MYR::withoutVat('507')->getCashAmount());
-        $this->assertSame('510', MYR::withoutVat('508')->getCashAmount());
-        $this->assertSame('510', MYR::withoutVat('509')->getCashAmount());
-        $this->assertSame('510', MYR::withoutVat('510')->getCashAmount());
     }
 }
