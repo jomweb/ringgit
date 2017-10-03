@@ -1,0 +1,22 @@
+{
+    "name": "jomweb/ringgit",
+    "description": "Malaysia Ringgit implementation on top of Money PHP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mior Muhammad Zaki",
+            "email": "crynobone@gmail.com"
+        }
+    ],
+    "require": {
+        "moneyphp/money": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8.35 || ~5.7 || ~6.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
+}
