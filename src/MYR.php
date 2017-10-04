@@ -38,6 +38,18 @@ class MYR implements Contracts\Money
     }
 
     /**
+     * Construct a new MYR money.
+     *
+     * @param  int|string  $amount
+     *
+     * @return static
+     */
+    public static function given($amount)
+    {
+        return static::withoutVat($amount);
+    }
+
+    /**
      * Returns the value represented by this object.
      *
      * @return string
