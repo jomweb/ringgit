@@ -37,15 +37,13 @@ class MYR implements Contracts\Money
     }
 
     /**
-     * Create new instance from money object.
+     * Returns the value represented by this object.
      *
-     * @param  int|string  $amount
-     *
-     * @return static
+     * @return string
      */
-    public function newInstance($amount)
+    public function getAmount()
     {
-        return new static($amount);
+        return $this->money->getAmount();
     }
 
     /**
@@ -104,6 +102,18 @@ class MYR implements Contracts\Money
     protected static function asMoney($amount)
     {
         return new Money($amount, new Currency('MYR'));
+    }
+
+    /**
+     * Create new instance from money object.
+     *
+     * @param  \Money\Money  $money
+     *
+     * @return static
+     */
+    protected function newInstance(Money $money)
+    {
+        return new static($money->getAmount());
     }
 
     /**

@@ -10,8 +10,14 @@ class VatTest extends TestCase
     {
         $money = MYR::withoutVat(500);
 
-        $this->assertSame('500', $money->getAmount());
         $this->assertSame('0', $money->getVatAmount());
+
+        $this->assertSame('500', $money->getAmount());
+        $this->assertSame('5.00', $money->amount());
+        $this->assertSame('500', $money->getAmountWithVat());
+        $this->assertSame('5.00', $money->amountWithVat());
+        $this->assertSame('500', $money->getCashAmountWithVat());
+        $this->assertSame('5.00', $money->cashAmountWithVat());
     }
 
     /** @test */
@@ -19,18 +25,29 @@ class VatTest extends TestCase
     {
         $money = MYR::beforeVat(1045);
 
+        $this->assertSame('63', $money->getVatAmount());
+
+        $this->assertSame('1045', $money->getAmount());
         $this->assertSame('10.45', $money->amount());
+        $this->assertSame('1108', $money->getAmountWithVat());
         $this->assertSame('11.08', $money->amountWithVat());
+        $this->assertSame('1110', $money->getCashAmountWithVat());
+        $this->assertSame('11.10', $money->cashAmountWithVat());
     }
 
     /** @test */
     public function it_can_be_declared_with_vat()
     {
-        $money = MYR::beforeVat(500);
+        $money = MYR::beforeVat(501);
 
-        $this->assertSame('500', $money->getAmount());
         $this->assertSame('30', $money->getVatAmount());
-        $this->assertSame('530', $money->getAmountWithVat());
+
+        $this->assertSame('501', $money->getAmount());
+        $this->assertSame('5.01', $money->amount());
+        $this->assertSame('531', $money->getAmountWithVat());
+        $this->assertSame('5.31', $money->amountWithVat());
+        $this->assertSame('530', $money->getCashAmountWithVat());
+        $this->assertSame('5.30', $money->cashAmountWithVat());
     }
 
     /** @test */

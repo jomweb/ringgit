@@ -8,9 +8,15 @@ class CashTest extends TestCase
     /** @test */
     public function it_can_display_proper_amount()
     {
-        $money = MYR::withoutVat(1045);
+        $money = MYR::withoutVat(1043);
 
-        $this->assertSame('10.45', $money->amount());
+        $this->assertSame('1043', $money->getAmount());
+        $this->assertSame('10.43', $money->amount());
+        $this->assertSame('10.43', $money->amountWithVat());
+
+        $this->assertSame('1045', $money->getCashAmount());
+        $this->assertSame('10.45', $money->cashAmount());
+        $this->assertSame('10.45', $money->cashAmountWithVat());
     }
 
     /** @test */

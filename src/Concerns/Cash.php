@@ -24,7 +24,7 @@ trait Cash
     public function cashAmount()
     {
         return $this->getFormatter()->format(
-            $this->newInstance($this->getCashAmount())
+            static::asMoney($this->getCashAmount())
         );
     }
 
