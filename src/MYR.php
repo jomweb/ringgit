@@ -4,6 +4,7 @@ namespace Duit;
 
 use Money\Money;
 use Money\Currency;
+use Money\MoneyFormatter;
 use BadMethodCallException;
 use Money\Currencies\ISOCurrencies;
 use Money\Formatter\DecimalMoneyFormatter;
@@ -135,12 +136,24 @@ class MYR implements Contracts\Money
      */
     protected function getFormatter()
     {
-        if (is_null(static::$formatter)) {
-            static::$formatter = new DecimalMoneyFormatter(
-                new ISOCurrencies()
+        if (! static::$formatter instanceof MoneyFormatter) {
+            static::setFormatter(
+                new DecimalMoneyFormatter(new ISOCurrencies())
             );
         }
 
         return static::$formatter;
+    }
+
+    /**
+     * Set money formatter.
+     *
+     * @param  \Money\MoneyFormatter  $formatter
+     *
+     * @return void
+     */
+    public static function setFormatter(MoneyFormatter $formatter)
+    {
+        static::$formatter = $formatter;
     }
 }
