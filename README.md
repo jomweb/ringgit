@@ -20,11 +20,32 @@ you need to represent money, use this Money value object.
 
 use Duit\MYR;
 
-$fiveMyr = new MYR(500);
+$fiveMyr = MYR::given(500);
 $tenMyr = $fiveMyr->add($fiveMyr);
 
 list($part1, $part2, $part3) = $tenMyr->allocate(array(1, 1, 1));
-assert($part1->equals(new MYR(334)));
-assert($part2->equals(new MYR(333)));
-assert($part3->equals(new MYR(333)));
+assert($part1->equals(MYR::given(334)));
+assert($part2->equals(MYR::given(333)));
+assert($part3->equals(MYR::given(333)));
 ```
+
+## Installation
+
+To install through composer, simply put the following in your `composer.json` file:
+
+```json
+{
+    "require": {
+        "jomweb/ringgit": "^0.2"
+    }
+}
+```
+
+And then run `composer install` from the terminal.
+
+### Quick Installation
+
+Above installation can also be simplify by using the following command:
+
+    composer require "jomweb/ringgit"
+
