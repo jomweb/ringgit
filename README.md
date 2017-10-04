@@ -49,3 +49,30 @@ Above installation can also be simplify by using the following command:
 
     composer require "jomweb/ringgit"
 
+## Usages
+
+### Declaration without GST
+
+```php
+use Duit\MYR;
+
+$money = new MYR(540);
+$money = MYR::given(540);
+$money = MYR::withoutVat(540);
+```
+
+### Declaration before GST
+
+```php
+use Duit\MYR;
+
+$money = MYR::beforeVat(540);
+```
+
+### Declaration after GST
+
+```php
+use Duit\MYR;
+
+$money = MYR::afterVat(530);
+```
