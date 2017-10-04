@@ -51,7 +51,9 @@ Above installation can also be simplify by using the following command:
 
 ## Usages
 
-### Declaration without GST
+### Declaration 
+
+#### Without GST
 
 ```php
 use Duit\MYR;
@@ -61,7 +63,7 @@ $money = MYR::given(540);
 $money = MYR::withoutVat(540);
 ```
 
-### Declaration before GST
+#### Before GST
 
 ```php
 use Duit\MYR;
@@ -69,7 +71,7 @@ use Duit\MYR;
 $money = MYR::beforeVat(540);
 ```
 
-### Declaration after GST
+#### After GST
 
 ```php
 use Duit\MYR;
