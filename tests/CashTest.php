@@ -12,10 +12,12 @@ class CashTest extends TestCase
 
         $this->assertSame('1043', $money->getAmount());
         $this->assertSame('10.43', $money->amount());
+        $this->assertSame('1043', $money->getAmountWithVat());
         $this->assertSame('10.43', $money->amountWithVat());
 
         $this->assertSame('1045', $money->getCashAmount());
         $this->assertSame('10.45', $money->cashAmount());
+        $this->assertSame('1045', $money->getCashAmountWithVat());
         $this->assertSame('10.45', $money->cashAmountWithVat());
     }
 
