@@ -9,7 +9,7 @@ use BadMethodCallException;
 use Money\Currencies\ISOCurrencies;
 use Money\Formatter\DecimalMoneyFormatter;
 
-class MYR implements Contracts\Money
+class MYR implements Contracts\Money, \JsonSerializable
 {
     use Concerns\Vat;
 
@@ -57,6 +57,16 @@ class MYR implements Contracts\Money
     public function getAmount()
     {
         return $this->money->getAmount();
+    }
+
+    /**
+     * Get the money currency.
+     *
+     * @return \Money\Money
+     */
+    public function getCurrency()
+    {
+        return $this->money->getCurrency();
     }
 
     /**
@@ -167,5 +177,22 @@ class MYR implements Contracts\Money
     public static function setFormatter(MoneyFormatter $formatter)
     {
         static::$formatter = $formatter;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'amount' => $this->getAmount(),
+            'cash' => $this->getCashAmount(),
+            'vat' => $this->getVat(),
+            'amount_with_vat' => $this->getAmountWithVat(),
+            'cash_with_vat' => $this->getCashAmountWithVat(),
+            'currency' => $this->getCurrency(),
+        ];
     }
 }
