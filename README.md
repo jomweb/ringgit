@@ -36,7 +36,7 @@ To install through composer, simply put the following in your `composer.json` fi
 ```json
 {
     "require": {
-        "jomweb/ringgit": "^0.2"
+        "jomweb/ringgit": "^0.3"
     }
 }
 ```
