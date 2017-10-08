@@ -11,7 +11,7 @@ use Money\Formatter\DecimalMoneyFormatter;
 
 class MYR implements Contracts\Money, \JsonSerializable
 {
-    use Concerns\Vat;
+    use Concerns\Gst;
 
     /**
      * Money implementation.
