@@ -55,26 +55,35 @@ Above installation can also be simplify by using the following command:
 
 #### Without GST
 
+Declaring Money (MYR) without GST (Zero).
+
 ```php
 use Duit\MYR;
 
 $money = new MYR(540);
 $money = MYR::given(540);
 $money = MYR::withoutVat(540);
+$money = MYR::withoutGst(540);
 ```
 
 #### Before GST
+
+Declaring Money (MYR) before GST is applied.
 
 ```php
 use Duit\MYR;
 
 $money = MYR::beforeVat(540);
+$money = MYR::beforeGst(540);
 ```
 
 #### After GST
+
+Declaring Money (MYR) with GST amount.
 
 ```php
 use Duit\MYR;
 
 $money = MYR::afterVat(530);
+$money = MYR::afterGst(530);
 ```
