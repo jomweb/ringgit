@@ -36,7 +36,7 @@ To install through composer, simply put the following in your `composer.json` fi
 ```json
 {
     "require": {
-        "jomweb/ringgit": "^0.3"
+        "jomweb/ringgit": "^1.0"
     }
 }
 ```
@@ -87,3 +87,4 @@ use Duit\MYR;
 $money = MYR::afterVat(530);
 $money = MYR::afterGst(530);
 ```
+
