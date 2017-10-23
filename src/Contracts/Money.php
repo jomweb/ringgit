@@ -9,12 +9,19 @@ interface Money
      *
      * @return string
      */
-    public function getAmount();
+    public function getAmount(): string;
+
+    /**
+     * Get the money currency.
+     *
+     * @return \Money\Currency
+     */
+    public function getCurrency(): \Money\Currency;
 
     /**
      * Get the money object.
      *
      * @return \Money\Money
      */
-    public function getMoney();
+    public function getMoney(): \Money\Money;
 }

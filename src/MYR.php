@@ -54,7 +54,7 @@ class MYR implements Contracts\Money, \JsonSerializable
      *
      * @return string
      */
-    public function getAmount()
+    public function getAmount(): string
     {
         return $this->money->getAmount();
     }
@@ -62,9 +62,9 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Get the money currency.
      *
-     * @return \Money\Money
+     * @return \Money\Currency
      */
-    public function getCurrency()
+    public function getCurrency(): Currency
     {
         return $this->money->getCurrency();
     }
@@ -74,7 +74,7 @@ class MYR implements Contracts\Money, \JsonSerializable
      *
      * @return \Money\Money
      */
-    public function getMoney()
+    public function getMoney(): Money
     {
         return $this->money;
     }
@@ -89,7 +89,7 @@ class MYR implements Contracts\Money, \JsonSerializable
      *
      * @return mixed
      */
-    public function __call($method, array $parameters)
+    public function __call(string $method, array $parameters)
     {
         if (! method_exists($this->money, $method)) {
             throw new BadMethodCallException("Method [{$method}] is not available.");
@@ -104,15 +104,13 @@ class MYR implements Contracts\Money, \JsonSerializable
             $first = array_shift($parameters);
 
             return $this->newInstance(
-                call_user_func(
-                    [$this->money, $method],
-                    $this->resolveMoneyObject($first),
-                    ...$parameters
+                $this->money->{$method}(
+                    $this->resolveMoneyObject($first), ...$parameters
                 )
             );
         }
 
-        return call_user_func([$this->money, $method], ...$parameters);
+        return $this->money->{$method}(...$parameters);
     }
 
     /**
@@ -122,7 +120,7 @@ class MYR implements Contracts\Money, \JsonSerializable
      *
      * @return \Money\Money
      */
-    protected static function asMoney($amount)
+    protected static function asMoney($amount): Money
     {
         return new Money($amount, new Currency('MYR'));
     }
@@ -146,7 +144,7 @@ class MYR implements Contracts\Money, \JsonSerializable
      *
      * @return \Money\Money
      */
-    protected function resolveMoneyObject($money)
+    protected function resolveMoneyObject($money): Money
     {
         return $money instanceof Contracts\Money ? $money->getMoney() : $money;
     }
@@ -154,9 +152,9 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Get money formatter.
      *
-     * @return \Money\Formatter\IntlMoneyFormatter
+     * @return \Money\MoneyFormatter
      */
-    protected function getFormatter()
+    protected function getFormatter(): MoneyFormatter
     {
         if (! static::$formatter instanceof MoneyFormatter) {
             static::setFormatter(
@@ -184,7 +182,7 @@ class MYR implements Contracts\Money, \JsonSerializable
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'amount' => $this->getAmount(),

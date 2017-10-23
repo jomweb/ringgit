@@ -3,6 +3,7 @@
 namespace Duit\Concerns;
 
 use Money\Number;
+use Money\MoneyFormatter;
 
 trait Cash
 {
@@ -11,7 +12,7 @@ trait Cash
      *
      * @return string
      */
-    public function amount()
+    public function amount(): string
     {
         return $this->getFormatter()->format($this->getMoney());
     }
@@ -21,7 +22,7 @@ trait Cash
      *
      * @return string
      */
-    public function cashAmount()
+    public function cashAmount(): string
     {
         return $this->getFormatter()->format(
             static::asMoney($this->getCashAmount())
@@ -33,7 +34,7 @@ trait Cash
      *
      * @return string
      */
-    public function getCashAmount()
+    public function getCashAmount(): string
     {
         return (string) $this->getClosestAcceptedCashAmount(
             $this->getMoney()->getAmount()
@@ -47,7 +48,7 @@ trait Cash
      *
      * @return int
      */
-    protected function getClosestAcceptedCashAmount($amount)
+    protected function getClosestAcceptedCashAmount($amount): int
     {
         $value = Number::fromString($amount)->getIntegerPart();
         $cent = $amount % 5;
@@ -64,7 +65,7 @@ trait Cash
     /**
      * Get money formatter.
      *
-     * @return \Money\Formatter\IntlMoneyFormatter
+     * @return \Money\MoneyFormatter
      */
-    abstract protected function getFormatter();
+    abstract protected function getFormatter(): MoneyFormatter;
 }

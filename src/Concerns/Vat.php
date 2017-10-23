@@ -56,7 +56,7 @@ trait Vat
      *
      * @return string
      */
-    public function amountWithVat()
+    public function amountWithVat(): string
     {
         return $this->getFormatter()->format(
             static::asMoney($this->getAmountWithVat())
@@ -68,7 +68,7 @@ trait Vat
      *
      * @return string
      */
-    public function cashAmountWithVat()
+    public function cashAmountWithVat(): string
     {
         return $this->getFormatter()->format(
             static::asMoney($this->getCashAmountWithVat())
@@ -80,7 +80,7 @@ trait Vat
      *
      * @return $this
      */
-    public function enableVat()
+    public function enableVat(): self
     {
         $this->vat = true;
 
@@ -92,7 +92,7 @@ trait Vat
      *
      * @return $this
      */
-    public function disableVat()
+    public function disableVat(): self
     {
         $this->vat = false;
 
@@ -102,9 +102,9 @@ trait Vat
     /**
      * Get GST/VAT amount.
      *
-     * @return int
+     * @return string
      */
-    public function getVatAmount()
+    public function getVatAmount(): string
     {
         if (! $this->vat) {
             return '0';
@@ -118,7 +118,7 @@ trait Vat
      *
      * @return string
      */
-    public function getAmountWithVat()
+    public function getAmountWithVat(): string
     {
         if (! $this->vat) {
             return $this->getMoney()->getAmount();
@@ -132,7 +132,7 @@ trait Vat
      *
      * @return string
      */
-    public function getCashAmountWithVat()
+    public function getCashAmountWithVat(): string
     {
         return (string) $this->getClosestAcceptedCashAmount(
             $this->getAmountWithVat()
@@ -146,7 +146,7 @@ trait Vat
      *
      * @return Money[]
      */
-    public function allocateWithVat(array $ratios)
+    public function allocateWithVat(array $ratios): array
     {
         $results = [];
         $allocates = static::asMoney($this->getAmountWithVat())->allocate($ratios);
@@ -167,7 +167,7 @@ trait Vat
      *
      * @return Money[]
      */
-    public function allocateWithVatTo($n)
+    public function allocateWithVatTo(int $n): array
     {
         $results = [];
         $allocates = static::asMoney($this->getAmountWithVat())->allocateTo($n);

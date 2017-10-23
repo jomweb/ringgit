@@ -47,7 +47,7 @@ trait Gst
      *
      * @return string
      */
-    public function amountWithGst()
+    public function amountWithGst(): string
     {
         return $this->amountWithVat();
     }
@@ -57,7 +57,7 @@ trait Gst
      *
      * @return string
      */
-    public function cashAmountWithGst()
+    public function cashAmountWithGst(): string
     {
         return $this->cashAmountWithVat();
     }
@@ -67,7 +67,7 @@ trait Gst
      *
      * @return $this
      */
-    public function enableGst()
+    public function enableGst(): self
     {
         return $this->enableVat();
     }
@@ -77,7 +77,7 @@ trait Gst
      *
      * @return $this
      */
-    public function disableGst()
+    public function disableGst(): self
     {
         return $this->disableVat();
     }
@@ -85,9 +85,9 @@ trait Gst
     /**
      * Get GST/VAT amount.
      *
-     * @return int
+     * @return string
      */
-    public function getGstAmount()
+    public function getGstAmount(): string
     {
         return $this->getVatAmount();
     }
@@ -97,7 +97,7 @@ trait Gst
      *
      * @return string
      */
-    public function getAmountWithGst()
+    public function getAmountWithGst(): string
     {
         return $this->getAmountWithVat();
     }
@@ -107,7 +107,7 @@ trait Gst
      *
      * @return string
      */
-    public function getCashAmountWithGst()
+    public function getCashAmountWithGst(): string
     {
         return $this->getCashAmountWithVat();
     }
@@ -119,7 +119,7 @@ trait Gst
      *
      * @return Money[]
      */
-    public function allocateWithGst(array $ratios)
+    public function allocateWithGst(array $ratios): array
     {
         return $this->allocateWithVat($ratios);
     }
@@ -133,7 +133,7 @@ trait Gst
      *
      * @return Money[]
      */
-    public function allocateWithGstTo($n)
+    public function allocateWithGstTo(int $n): array
     {
         return $this->allocateWithVatTo($n);
     }
