@@ -2,6 +2,10 @@
 
 namespace Duit\Concerns;
 
+use Money\Money;
+use Money\Currency;
+use Money\MoneyFormatter;
+
 trait Vat
 {
     use Cash;
@@ -184,7 +188,7 @@ trait Vat
      *
      * @return \Money\Money
      */
-    abstract public function getMoney();
+    abstract public function getMoney(): Money;
 
     /**
      * Build money object.
@@ -193,12 +197,12 @@ trait Vat
      *
      * @return \Money\Money
      */
-    abstract protected static function asMoney($amount);
+    abstract protected static function asMoney($amount): Money;
 
     /**
      * Get money formatter.
      *
-     * @return \Money\Formatter\IntlMoneyFormatter
+     * @return \Money\MoneyFormatter
      */
-    abstract protected function getFormatter();
+    abstract protected function getFormatter(): MoneyFormatter;
 }
