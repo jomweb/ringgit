@@ -110,7 +110,9 @@ class MYR implements Contracts\Money, \JsonSerializable
             );
         }
 
-        return $this->money->{$method}(...$parameters);
+        return $this->newInstance(
+            $this->money->{$method}(...$parameters)
+        );
     }
 
     /**
