@@ -54,6 +54,17 @@ class MYRTest extends TestCase
         $this->assertSame('500', $money->divide(2)->getAmount());
     }
 
+    /** @test */
+    public function it_immutable_between_operation()
+    {
+        $money = new MYR(1000);
+
+        $this->assertSame('1530', $money->add(new MYR(530))->getAmount());
+        $this->assertSame('470', $money->subtract(new MYR(530))->getAmount());
+        $this->assertSame('2000', $money->multiply(2)->getAmount());
+        $this->assertSame('500', $money->divide(2)->getAmount());
+    }
+
     /**
      * @test
      * @expectedException \BadMethodCallException
