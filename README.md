@@ -6,7 +6,7 @@ Malaysia Ringgit implementation on top of Money PHP
 [![Total Downloads](https://poser.pugx.org/jomweb/ringgit/downloads)](https://packagist.org/packages/jomweb/ringgit)
 [![Latest Unstable Version](https://poser.pugx.org/jomweb/ringgit/v/unstable)](https://packagist.org/packages/jomweb/ringgit)
 [![License](https://poser.pugx.org/jomweb/ringgit/license)](https://packagist.org/packages/jomweb/ringgit)
-
+[![Coverage Status](https://coveralls.io/repos/github/jomweb/ringgit/badge.svg?branch=master)](https://coveralls.io/github/jomweb/ringgit?branch=master)
 
 PHP 7.0+ library to make working with money safer, easier, and fun for Malaysia Ringgit!
 
