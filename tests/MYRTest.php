@@ -6,6 +6,23 @@ use PHPUnit\Framework\TestCase;
 class MYRTest extends TestCase
 {
     /** @test */
+    public function it_can_be_initiated_using_given()
+    {
+        $money = MYR::given(500);
+
+        $this->assertSame('1000', $money->add($money)->getAmount());
+    }
+
+    /** @test */
+    public function it_can_be_get_currency_information()
+    {
+        $money = new MYR(500);
+
+        $this->assertInstanceOf('Money\Currency', $money->getCurrency());
+        $this->assertSame('MYR', $money->getCurrency()->getCode());
+    }
+
+    /** @test */
     public function it_can_be_added()
     {
         $money = new MYR(500);
@@ -44,5 +61,13 @@ class MYRTest extends TestCase
     public function it_can_call_undefined_method()
     {
         (new MYR(500))->foobar();
+    }
+
+    /** @test */
+    public function it_can_be_converted_to_json()
+    {
+        $money = MYR::given(1124);
+
+        $this->assertSame('{"amount":"1124","cash":"1125","vat":"0","amount_with_vat":"1124","cash_with_vat":"1125","currency":"MYR"}', json_encode($money));
     }
 }

@@ -189,7 +189,7 @@ class MYR implements Contracts\Money, \JsonSerializable
         return [
             'amount' => $this->getAmount(),
             'cash' => $this->getCashAmount(),
-            'vat' => $this->getVat(),
+            'vat' => $this->getVatAmount(),
             'amount_with_vat' => $this->getAmountWithVat(),
             'cash_with_vat' => $this->getCashAmountWithVat(),
             'currency' => $this->getCurrency(),

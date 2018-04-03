@@ -6,6 +6,38 @@ use PHPUnit\Framework\TestCase;
 class GstTest extends TestCase
 {
     /** @test */
+    public function it_can_enable_gst_after_initiated()
+    {
+        $money = MYR::withoutGst(500);
+
+        $this->assertSame('5.00', $money->amountWithGst());
+        $this->assertSame('500', $money->getAmountWithGst());
+        $this->assertSame('0', $money->getGstAmount());
+
+        $money->enableGst();
+
+        $this->assertSame('5.30', $money->amountWithGst());
+        $this->assertSame('530', $money->getAmountWithGst());
+        $this->assertSame('30', $money->getGstAmount());
+    }
+
+    /** @test */
+    public function it_can_disable_gst_after_initiated()
+    {
+        $money = MYR::afterGst(530);
+
+        $this->assertSame('5.30', $money->amountWithGst());
+        $this->assertSame('530', $money->getAmountWithGst());
+        $this->assertSame('30', $money->getGstAmount());
+
+        $money->disableGst();
+
+        $this->assertSame('5.00', $money->amountWithGst());
+        $this->assertSame('500', $money->getAmountWithGst());
+        $this->assertSame('0', $money->getGstAmount());
+    }
+
+    /** @test */
     public function it_can_be_declared_without_gst_as_default()
     {
         $money = MYR::withoutGst(500);
