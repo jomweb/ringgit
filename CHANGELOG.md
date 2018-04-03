@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `jomweb/ringgit`.
 
+## 1.0.3
+
+Released: 2018-04-03
+
+### Fixes
+
+* Fixes serialization to JSON.
+
 ## 1.0.2
 
 Released: 2017-12-30
