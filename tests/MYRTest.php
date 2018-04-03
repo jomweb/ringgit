@@ -63,6 +63,8 @@ class MYRTest extends TestCase
         $this->assertSame('470', $money->subtract(new MYR(530))->getAmount());
         $this->assertSame('2000', $money->multiply(2)->getAmount());
         $this->assertSame('500', $money->divide(2)->getAmount());
+
+        $this->assertSame('2925', $money->add(new MYR(1500))->subtract(new MYR(550))->multiply(3)->divide(2)->getAmount());
     }
 
     /**
