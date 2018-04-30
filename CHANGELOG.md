@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `jomweb/ringgit`.
 
+## 1.0.4
+
+Released: 2018-04-30
+
+### Added
+
+* Add `Duit\MYR::parse()` to parse value to money.
+
 ## 1.0.3
 
 Released: 2018-04-03
