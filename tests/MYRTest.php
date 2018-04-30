@@ -10,7 +10,7 @@ class MYRTest extends TestCase
     {
         $money = MYR::given(500);
 
-        $this->assertSame('1000', $money->add($money)->getAmount());
+        $this->assertSame('500', $money->getAmount());
     }
 
     /** @test */
@@ -18,7 +18,7 @@ class MYRTest extends TestCase
     {
         $money = MYR::parse('2.50');
 
-        $this->assertSame('500', $money->add($money)->getAmount());
+        $this->assertSame('250', $money->getAmount());
     }
 
     /** @test */
