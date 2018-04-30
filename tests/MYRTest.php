@@ -14,6 +14,14 @@ class MYRTest extends TestCase
     }
 
     /** @test */
+    public function it_can_be_initiated_using_parse()
+    {
+        $money = MYR::parse('2.50');
+
+        $this->assertSame('500', $money->add($money)->getAmount());
+    }
+
+    /** @test */
     public function it_can_be_get_currency_information()
     {
         $money = new MYR(500);

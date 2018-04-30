@@ -7,6 +7,7 @@ use Money\Currency;
 use Money\MoneyFormatter;
 use BadMethodCallException;
 use Money\Currencies\ISOCurrencies;
+use Money\Parser\DecimalMoneyParser;
 use Money\Formatter\DecimalMoneyFormatter;
 
 class MYR implements Contracts\Money, \JsonSerializable
@@ -47,6 +48,22 @@ class MYR implements Contracts\Money, \JsonSerializable
     public static function given($amount)
     {
         return static::withoutVat($amount);
+    }
+
+    /**
+     * Parse value as ringgit.
+     *
+     * @param  string  $amount
+     *
+     * @return static
+     */
+    public static function parse(string $amount)
+    {
+        $parser = new DecimalMoneyParser(new ISOCurrencies());
+
+        return static::given(
+            $parser->parse($amount, 'MYR')->getAmount()
+        );
     }
 
     /**
