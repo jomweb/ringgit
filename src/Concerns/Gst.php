@@ -67,7 +67,7 @@ trait Gst
      *
      * @return $this
      */
-    public function enableGst(): self
+    final public function enableGst(): self
     {
         return $this->enableVat();
     }
@@ -77,7 +77,7 @@ trait Gst
      *
      * @return $this
      */
-    public function disableGst(): self
+    final public function disableGst(): self
     {
         return $this->disableVat();
     }

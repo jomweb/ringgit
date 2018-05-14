@@ -84,7 +84,7 @@ trait Vat
      *
      * @return $this
      */
-    public function enableVat(): self
+    final public function enableVat(): self
     {
         $this->vat = true;
 
@@ -96,7 +96,7 @@ trait Vat
      *
      * @return $this
      */
-    public function disableVat(): self
+    final public function disableVat(): self
     {
         $this->vat = false;
 
