@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `jomweb/ringgit`.
 
+## 1.0.5
+
+Released: 2018-05-21
+
+### Changes
+
+* Improves forward compatibility for `Duit\MYR::parse()`.
+
 ## 1.0.4
 
 Released: 2018-04-30
