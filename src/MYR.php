@@ -62,7 +62,7 @@ class MYR implements Contracts\Money, \JsonSerializable
         $parser = new DecimalMoneyParser(new ISOCurrencies());
 
         return static::given(
-            $parser->parse($amount, 'MYR')->getAmount()
+            $parser->parse($amount, new Currency('MYR'))->getAmount()
         );
     }
 
