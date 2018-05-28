@@ -32,14 +32,87 @@ class MYRTest extends TestCase
     }
 
     /** @test */
-    public function it_can_be_equaled()
+    public function it_can_determine_is_equals()
     {
         $money = new MYR(500);
         $compared = Money::MYR(500);
 
         $stub = $money->equals($compared);
 
-        $this->assertSame('2000', $stub->getAmount());
+        $this->assertTrue($stub);
+
+        $this->assertFalse((new MYR(500))->equals(new MYR(300)));
+    }
+
+    /** @test */
+    public function it_can_determine_is_same_currency()
+    {
+        $money = new MYR(500);
+        $compared = Money::MYR(800);
+
+        $stub = $money->isSameCurrency($compared);
+
+        $this->assertTrue($stub);
+
+        $money = new MYR(500);
+        $compared = Money::USD(800);
+
+        $stub = $money->isSameCurrency($compared);
+
+        $this->assertFalse($stub);
+    }
+
+    /** @test */
+    public function it_can_determine_is_less_than()
+    {
+        $money = new MYR(500);
+        $compared = Money::MYR(1000);
+
+        $stub = $money->lessThan($compared);
+
+        $this->assertTrue($stub);
+
+        $this->assertFalse((new MYR(1000))->lessThan(new MYR(500)));
+    }
+
+    /** @test */
+    public function it_can_determine_is_less_than_or_equals()
+    {
+        $money = new MYR(500);
+        $compared = Money::MYR(500);
+
+        $stub = $money->lessThanOrEqual($compared);
+
+        $this->assertTrue($stub);
+
+        $this->assertFalse((new MYR(501))->equals(new MYR(500)));
+    }
+
+
+    /** @test */
+    public function it_can_determine_is_greater_than()
+    {
+        $money = new MYR(1000);
+        $compared = Money::MYR(500);
+
+        $stub = $money->greaterThan($compared);
+
+        $this->assertTrue($stub);
+
+        $this->assertFalse((new MYR(500))->greaterThan(new MYR(1000)));
+    }
+
+    /** @test */
+    public function it_can_determine_is_greater_than_or_equals()
+    {
+        $money = new MYR(500);
+        $compared = Money::MYR(500);
+
+        $stub = $money->greaterThanOrEqual($compared);
+
+        $this->assertTrue($stub);
+
+        $this->assertFalse((new MYR(500))->greaterThanOrEqual(new MYR(501)));
     }
 
     /** @test */
