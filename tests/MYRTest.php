@@ -88,7 +88,6 @@ class MYRTest extends TestCase
         $this->assertFalse((new MYR(501))->equals(new MYR(500)));
     }
 
-
     /** @test */
     public function it_can_determine_is_greater_than()
     {

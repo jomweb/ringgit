@@ -3,7 +3,6 @@
 namespace Duit\Concerns;
 
 use Money\Money;
-use Money\Currency;
 use Money\MoneyFormatter;
 
 trait Vat
