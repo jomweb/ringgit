@@ -12,13 +12,13 @@ class CashTest extends TestCase
 
         $this->assertSame('1043', $money->getAmount());
         $this->assertSame('10.43', $money->amount());
-        $this->assertSame('1043', $money->getAmountWithGst());
-        $this->assertSame('10.43', $money->amountWithGst());
+        $this->assertSame('1043', $money->getAmountWithTax());
+        $this->assertSame('10.43', $money->amountWithTax());
 
         $this->assertSame('1045', $money->getCashAmount());
         $this->assertSame('10.45', $money->cashAmount());
-        $this->assertSame('1045', $money->getCashAmountWithGst());
-        $this->assertSame('10.45', $money->cashAmountWithGst());
+        $this->assertSame('1045', $money->getCashAmountWithTax());
+        $this->assertSame('10.45', $money->cashAmountWithTax());
     }
 
     /** @test */
@@ -40,16 +40,16 @@ class CashTest extends TestCase
     /** @test */
     public function it_can_be_converted_to_supported_cash_value_with_vat()
     {
-        $this->assertSame('530', MYR::beforeGst('501')->getCashAmountWithGst());
-        $this->assertSame('530', MYR::beforeGst('502')->getCashAmountWithGst());
-        $this->assertSame('535', MYR::beforeGst('503')->getCashAmountWithGst());
-        $this->assertSame('535', MYR::beforeGst('504')->getCashAmountWithGst());
-        $this->assertSame('535', MYR::beforeGst('505')->getCashAmountWithGst());
+        $this->assertSame('530', MYR::beforeGst('501')->getCashAmountWithTax());
+        $this->assertSame('530', MYR::beforeGst('502')->getCashAmountWithTax());
+        $this->assertSame('535', MYR::beforeGst('503')->getCashAmountWithTax());
+        $this->assertSame('535', MYR::beforeGst('504')->getCashAmountWithTax());
+        $this->assertSame('535', MYR::beforeGst('505')->getCashAmountWithTax());
 
-        $this->assertSame('535', MYR::beforeGst('506')->getCashAmountWithGst());
-        $this->assertSame('535', MYR::beforeGst('507')->getCashAmountWithGst());
-        $this->assertSame('540', MYR::beforeGst('508')->getCashAmountWithGst());
-        $this->assertSame('540', MYR::beforeGst('509')->getCashAmountWithGst());
-        $this->assertSame('540', MYR::beforeGst('510')->getCashAmountWithGst());
+        $this->assertSame('535', MYR::beforeGst('506')->getCashAmountWithTax());
+        $this->assertSame('535', MYR::beforeGst('507')->getCashAmountWithTax());
+        $this->assertSame('540', MYR::beforeGst('508')->getCashAmountWithTax());
+        $this->assertSame('540', MYR::beforeGst('509')->getCashAmountWithTax());
+        $this->assertSame('540', MYR::beforeGst('510')->getCashAmountWithTax());
     }
 }

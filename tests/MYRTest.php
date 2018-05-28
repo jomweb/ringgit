@@ -187,6 +187,6 @@ class MYRTest extends TestCase
     {
         $money = MYR::given(1124);
 
-        $this->assertSame('{"amount":"1124","cash":"1125","gst":"0","amount_with_gst":"1124","cash_with_gst":"1125","currency":"MYR"}', json_encode($money));
+        $this->assertSame('{"amount":"1124","cash":"1125","tax":"0","tax_code":null,"tax_rate":null,"amount_with_tax":"1124","cash_with_tax":"1125","currency":"MYR"}', json_encode($money));
     }
 }
