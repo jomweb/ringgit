@@ -2,6 +2,8 @@
 
 namespace Duit\Concerns;
 
+use Money\Money;
+use Money\MoneyFormatter;
 use Duit\Contracts\Taxable;
 
 trait Tax
@@ -110,7 +112,7 @@ trait Tax
      */
     final public function hasTax(): bool
     {
-        return $this->taxable instanceof Taxable;
+        return $this->getTax() instanceof Taxable;
     }
 
     /**
@@ -124,7 +126,7 @@ trait Tax
             return '0';
         }
 
-        return $this->taxable->getTaxAmount($this->getMoney());
+        return $this->getTax()->getTaxAmount($this->getMoney());
     }
 
     /**
@@ -138,7 +140,7 @@ trait Tax
             return $this->getMoney()->getAmount();
         }
 
-        return $this->taxable->getAmountWithTax($this->getMoney());
+        return $this->getTax()->getAmountWithTax($this->getMoney());
     }
 
     /**
@@ -162,15 +164,13 @@ trait Tax
      */
     public function allocateWithTax(array $ratios): array
     {
-        if (! $this->hasTax()) {
-            return $this->getMoney()->allocate($ratios);
-        }
+        $method = $this->hasTax() ? 'afterTax' : 'withoutTax';
 
         $results = [];
         $allocates = static::asMoney($this->getAmountWithTax())->allocate($ratios);
 
         foreach ($allocates as $allocate) {
-            $results[] = static::afterTax($allocate->getAmount(), $this->taxable);
+            $results[] = static::{$method}($allocate->getAmount(), $this->getTax());
         }
 
         return $results;
@@ -187,17 +187,45 @@ trait Tax
      */
     public function allocateWithTaxTo(int $n): array
     {
-        if (! $this->hasTax()) {
-            return $this->getMoney()->allocateWithTaxTo($n);
-        }
+        $method = $this->hasTax() ? 'afterTax' : 'withoutTax';
 
         $results = [];
         $allocates = static::asMoney($this->getAmountWithTax())->allocateTo($n);
 
         foreach ($allocates as $allocate) {
-            $results[] = static::afterTax($allocate->getAmount(), $this->taxable);
+            $results[] = static::{$method}($allocate->getAmount(), $this->getTax());
         }
 
         return $results;
     }
+
+    /**
+     * Get applied tax.
+     *
+     * @return \Duit\Contracts\Taxable|null
+     */
+    abstract public function getTax(): ?Contracts\Taxable;
+
+    /**
+     * Get the money object.
+     *
+     * @return \Money\Money
+     */
+    abstract public function getMoney(): Money;
+
+    /**
+     * Build money object.
+     *
+     * @param  int|string  $amount
+     *
+     * @return \Money\Money
+     */
+    abstract protected static function asMoney($amount): Money;
+
+    /**
+     * Get money formatter.
+     *
+     * @return \Money\MoneyFormatter
+     */
+    abstract protected function getFormatter(): MoneyFormatter;
 }

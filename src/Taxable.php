@@ -9,7 +9,7 @@ abstract class Taxable implements Contracts\Taxable
     /**
      * Tax code.
      *
-     * @var string
+     * @var string|null
      */
     protected $taxCode;
 
@@ -57,9 +57,9 @@ abstract class Taxable implements Contracts\Taxable
     /**
      * Tax code.
      *
-     * @return string
+     * @return string|null
      */
-    public function taxCode(): string
+    public function taxCode(): ?string
     {
         return $this->taxCode;
     }

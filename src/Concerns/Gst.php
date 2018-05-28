@@ -30,7 +30,7 @@ trait Gst
      */
     public static function beforeGst($amount)
     {
-        return (new static($amount))->enableTax(new StandardRate());
+        return (new static($amount))->useGstStandardRate();
     }
 
     /**
@@ -42,7 +42,7 @@ trait Gst
      */
     public static function withoutGst($amount)
     {
-        return (new static($amount))->disableTax();
+        return (new static($amount))->useGstZeroRate();
     }
 
     /**

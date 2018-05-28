@@ -47,7 +47,7 @@ class MYR implements Contracts\Money, \JsonSerializable
      */
     public static function given($amount)
     {
-        return static::withoutGst($amount);
+        return static::withoutTax($amount);
     }
 
     /**
@@ -94,6 +94,16 @@ class MYR implements Contracts\Money, \JsonSerializable
     public function getMoney(): Money
     {
         return $this->money;
+    }
+
+    /**
+     * Get applied tax.
+     *
+     * @return \Duit\Contracts\Taxable|null
+     */
+    final public function getTax(): ?Contracts\Taxable
+    {
+        return $this->taxable;
     }
 
     /**

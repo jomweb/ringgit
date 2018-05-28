@@ -1,7 +1,11 @@
 <?php
 
+namespace Duit\Tests;
+
 use Duit\MYR;
+use Duit\Taxable\Gst\ZeroRate;
 use PHPUnit\Framework\TestCase;
+use Duit\Taxable\Gst\StandardRate;
 
 class GstTest extends TestCase
 {
@@ -13,12 +17,16 @@ class GstTest extends TestCase
         $this->assertSame('5.00', $money->amountWithTax());
         $this->assertSame('500', $money->getAmountWithTax());
         $this->assertSame('0', $money->getTaxAmount());
+        $this->assertTrue($money->hasTax());
+        $this->assertInstanceOf(ZeroRate::class, $money->getTax());
 
         $money->useGstStandardRate();
 
         $this->assertSame('5.30', $money->amountWithTax());
         $this->assertSame('530', $money->getAmountWithTax());
         $this->assertSame('30', $money->getTaxAmount());
+        $this->assertTrue($money->hasTax());
+        $this->assertInstanceOf(StandardRate::class, $money->getTax());
     }
 
     /** @test */
@@ -100,6 +108,10 @@ class GstTest extends TestCase
         $this->assertSame('177', $allocation[0]->getAmountWithTax());
         $this->assertSame('177', $allocation[1]->getAmountWithTax());
         $this->assertSame('176', $allocation[2]->getAmountWithTax());
+
+        $this->assertTrue($allocation[0]->hasTax());
+        $this->assertTrue($allocation[1]->hasTax());
+        $this->assertTrue($allocation[2]->hasTax());
     }
 
     /** @test */
@@ -120,6 +132,10 @@ class GstTest extends TestCase
         $this->assertSame('177', $allocation[0]->getAmountWithTax());
         $this->assertSame('177', $allocation[1]->getAmountWithTax());
         $this->assertSame('176', $allocation[2]->getAmountWithTax());
+
+        $this->assertTrue($allocation[0]->hasTax());
+        $this->assertTrue($allocation[1]->hasTax());
+        $this->assertTrue($allocation[2]->hasTax());
     }
 
     /** @test */

@@ -34,14 +34,14 @@ interface Taxable
     /**
      * Tax code.
      *
-     * @return string
+     * @return string|null
      */
-    public function taxCode(): string;
+    public function taxCode(): ?string;
 
     /**
      * Tax percentage.
      *
      * @return float
      */
-    public function taxRate();
+    public function taxRate(): float;
 }

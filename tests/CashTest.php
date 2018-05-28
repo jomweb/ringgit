@@ -1,5 +1,7 @@
 <?php
 
+namespace Duit\Tests;
+
 use Duit\MYR;
 use PHPUnit\Framework\TestCase;
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace Duit\Tests;
+
 use Duit\MYR;
 use Money\Money;
 use PHPUnit\Framework\TestCase;
@@ -12,6 +14,8 @@ class MYRTest extends TestCase
         $money = MYR::given(500);
 
         $this->assertSame('500', $money->getAmount());
+        $this->assertFalse($money->hasTax());
+        $this->assertNull($money->getTax());
     }
 
     /** @test */
@@ -188,5 +192,53 @@ class MYRTest extends TestCase
         $money = MYR::given(1124);
 
         $this->assertSame('{"amount":"1124","cash":"1125","tax":"0","tax_code":null,"tax_rate":null,"amount_with_tax":"1124","cash_with_tax":"1125","currency":"MYR"}', json_encode($money));
+    }
+
+    /** @test */
+    public function it_can_be_allocated_without_tax()
+    {
+        $money = MYR::given(500);
+
+        $allocation = $money->allocateWithTax([1, 1, 1]);
+
+        $this->assertSame('167', $allocation[0]->getAmount());
+        $this->assertSame('167', $allocation[1]->getAmount());
+        $this->assertSame('166', $allocation[2]->getAmount());
+
+        $this->assertSame('0', $allocation[0]->getTaxAmount());
+        $this->assertSame('0', $allocation[1]->getTaxAmount());
+        $this->assertSame('0', $allocation[2]->getTaxAmount());
+
+        $this->assertSame('167', $allocation[0]->getAmountWithTax());
+        $this->assertSame('167', $allocation[1]->getAmountWithTax());
+        $this->assertSame('166', $allocation[2]->getAmountWithTax());
+
+        $this->assertFalse($allocation[0]->hasTax());
+        $this->assertFalse($allocation[1]->hasTax());
+        $this->assertFalse($allocation[2]->hasTax());
+    }
+
+    /** @test */
+    public function it_can_be_allocated_with_gst_using_n()
+    {
+        $money = MYR::given(500);
+
+        $allocation = $money->allocateWithTaxTo(3);
+
+        $this->assertSame('167', $allocation[0]->getAmount());
+        $this->assertSame('167', $allocation[1]->getAmount());
+        $this->assertSame('166', $allocation[2]->getAmount());
+
+        $this->assertSame('0', $allocation[0]->getTaxAmount());
+        $this->assertSame('0', $allocation[1]->getTaxAmount());
+        $this->assertSame('0', $allocation[2]->getTaxAmount());
+
+        $this->assertSame('167', $allocation[0]->getAmountWithTax());
+        $this->assertSame('167', $allocation[1]->getAmountWithTax());
+        $this->assertSame('166', $allocation[2]->getAmountWithTax());
+
+        $this->assertFalse($allocation[0]->hasTax());
+        $this->assertFalse($allocation[1]->hasTax());
+        $this->assertFalse($allocation[2]->hasTax());
     }
 }
