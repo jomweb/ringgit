@@ -3,9 +3,9 @@ sudo: false
 dist: trusty
 
 php:
-  - 7.0
   - 7.1
   - 7.2
+  - nightly
 
 env:
   global:
@@ -31,8 +31,9 @@ after_script:
 
 matrix:
   include:
-    - php: 7.0
+    - php: 7.1
       env: setup=coveralls coverage=yes
   allow_failures:
+    - php: nightly
     - env: setup=coveralls coverage=yes
   fast_finish: true
