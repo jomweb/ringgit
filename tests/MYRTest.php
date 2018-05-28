@@ -1,6 +1,7 @@
 <?php
 
 use Duit\MYR;
+use Money\Money;
 use PHPUnit\Framework\TestCase;
 
 class MYRTest extends TestCase
@@ -31,19 +32,38 @@ class MYRTest extends TestCase
     }
 
     /** @test */
+    public function it_can_be_equaled()
+    {
+        $money = new MYR(500);
+        $compared = Money::MYR(500);
+
+        $stub = $money->equals($compared);
+
+        $this->assertSame('2000', $stub->getAmount());
+    }
+
+    /** @test */
     public function it_can_be_added()
     {
         $money = new MYR(500);
+        $compared = Money::MYR(500);
 
-        $this->assertSame('1000', $money->add($money)->getAmount());
+        $stub = $money->add($compared);
+
+        $this->assertInstanceOf('Duit\MYR', $stub);
+        $this->assertSame('1000', $stub->getAmount());
     }
 
     /** @test */
     public function it_can_be_subtracted()
     {
         $money = new MYR(1000);
+        $compared = Money::MYR(300);
 
-        $this->assertSame('700', $money->subtract(new MYR(300))->getAmount());
+        $stub = $money->subtract($compared);
+
+        $this->assertInstanceOf('Duit\MYR', $stub);
+        $this->assertSame('700', $stub->getAmount());
     }
 
     /** @test */
@@ -51,7 +71,10 @@ class MYRTest extends TestCase
     {
         $money = new MYR(1000);
 
-        $this->assertSame('2000', $money->multiply(2)->getAmount());
+        $stub = $money->multiply(2);
+
+        $this->assertInstanceOf('Duit\MYR', $stub);
+        $this->assertSame('2000', $stub->getAmount());
     }
 
     /** @test */
@@ -59,7 +82,10 @@ class MYRTest extends TestCase
     {
         $money = new MYR(1000);
 
-        $this->assertSame('500', $money->divide(2)->getAmount());
+        $stub = $money->divide(2);
+
+        $this->assertInstanceOf('Duit\MYR', $stub);
+        $this->assertSame('500', $stub->getAmount());
     }
 
     /** @test */

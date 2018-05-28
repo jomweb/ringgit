@@ -120,11 +120,15 @@ class MYR implements Contracts\Money, \JsonSerializable
         if (in_array($method, $passthrough)) {
             $first = array_shift($parameters);
 
-            return $this->newInstance(
-                $this->money->{$method}(
-                    $this->resolveMoneyObject($first), ...$parameters
-                )
+            $resolved = $this->money->{$method}(
+                $this->resolveMoneyObject($first), ...$parameters
             );
+
+            if (in_array($method, ['add', 'subtract'])) {
+                return $this->newInstance($resolved);
+            }
+
+            return $resolved;
         }
 
         return $this->newInstance(
