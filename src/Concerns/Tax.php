@@ -11,7 +11,7 @@ trait Tax
     /**
      * Enable Tax calculation.
      *
-     * @var \Duit\Contracts\Taxable
+     * @var \Duit\Contracts\Taxable|null
      */
     protected $taxable;
 
