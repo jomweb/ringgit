@@ -2,7 +2,8 @@
 
 namespace Duit\Concerns;
 
-use Duit\Taxable\Gst\Standard;
+use Duit\Taxable\Gst\ZeroRate;
+use Duit\Taxable\Gst\StandardRate;
 
 trait Gst
 {
@@ -17,7 +18,7 @@ trait Gst
      */
     public static function afterGst($amount)
     {
-        return static::afterTax($amount, new Standard());
+        return static::afterTax($amount, new StandardRate());
     }
 
     /**
@@ -29,7 +30,7 @@ trait Gst
      */
     public static function beforeGst($amount)
     {
-        return (new static($amount))->enableTax(new Standard());
+        return (new static($amount))->enableTax(new StandardRate());
     }
 
     /**
@@ -49,9 +50,9 @@ trait Gst
      *
      * @return $this
      */
-    final public function enableGst(): self
+    final public function useGstStandardRate(): self
     {
-        return $this->enableTax(new Standard());
+        return $this->enableTax(new StandardRate());
     }
 
     /**
@@ -59,8 +60,8 @@ trait Gst
      *
      * @return $this
      */
-    final public function disableGst(): self
+    final public function useGstZeroRate(): self
     {
-        return $this->disableTax();
+        return $this->enableTax(new ZeroRate());
     }
 }

@@ -4,7 +4,7 @@ namespace Duit\Taxable\Gst;
 
 use Duit\Taxable\Gst;
 
-class Zero extends Gst
+class ZeroRate extends Gst
 {
     /**
      * GST code.

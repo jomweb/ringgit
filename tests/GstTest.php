@@ -14,7 +14,7 @@ class GstTest extends TestCase
         $this->assertSame('500', $money->getAmountWithTax());
         $this->assertSame('0', $money->getTaxAmount());
 
-        $money->enableGst();
+        $money->useGstStandardRate();
 
         $this->assertSame('5.30', $money->amountWithTax());
         $this->assertSame('530', $money->getAmountWithTax());
@@ -30,7 +30,7 @@ class GstTest extends TestCase
         $this->assertSame('530', $money->getAmountWithTax());
         $this->assertSame('30', $money->getTaxAmount());
 
-        $money->disableGst();
+        $money->useGstZeroRate();
 
         $this->assertSame('5.00', $money->amountWithTax());
         $this->assertSame('500', $money->getAmountWithTax());
