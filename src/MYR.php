@@ -47,7 +47,7 @@ class MYR implements Contracts\Money, \JsonSerializable
      */
     public static function given($amount)
     {
-        return static::withoutVat($amount);
+        return static::withoutGst($amount);
     }
 
     /**
@@ -210,9 +210,9 @@ class MYR implements Contracts\Money, \JsonSerializable
         return [
             'amount' => $this->getAmount(),
             'cash' => $this->getCashAmount(),
-            'vat' => $this->getVatAmount(),
-            'amount_with_vat' => $this->getAmountWithVat(),
-            'cash_with_vat' => $this->getCashAmountWithVat(),
+            'gst' => $this->getGstAmount(),
+            'amount_with_gst' => $this->getAmountWithGst(),
+            'cash_with_gst' => $this->getCashAmountWithGst(),
             'currency' => $this->getCurrency(),
         ];
     }
