@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `jomweb/ringgit`.
 
+## 1.0.6
+
+Released: 2018-05-29
+
+### Fixes
+
+* Fixes return value from `Duit\MYR::__call()` which isn't an instance of `Money\Money`.
+
 ## 1.0.5
 
 Released: 2018-05-21
