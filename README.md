@@ -51,7 +51,7 @@ Above installation can also be simplify by using the following command:
 
 ## Usages
 
-### Declaration 
+### GST Declaration
 
 #### Without GST
 
@@ -63,6 +63,7 @@ use Duit\MYR;
 $money = new MYR(540);
 $money = MYR::given(540);
 $money = MYR::withoutGst(540);
+$money = MYR::withoutTax(540);
 ```
 
 #### Before GST
@@ -71,8 +72,19 @@ Declaring Money (MYR) before GST is applied.
 
 ```php
 use Duit\MYR;
+use Duit\Taxable\Gst\ZeroRate;
+use Duit\Taxable\Gst\StandardRate;
 
 $money = MYR::beforeGst(540);
+
+$money = MYR::beforeTax(540, new StandardRate());
+$money = MYR::beforeTax(540, new ZeroRate());
+
+$money = MYR::given(540)->useGstStandardRate(); // 6%
+$money = MYR::given(540)->useGstZeroRate(); // 0%
+
+$money = MYR::given(540)->enableTax(new StandardRate());
+$money = MYR::given(540)->enableTax(new ZeroRate());
 ```
 
 #### After GST
@@ -81,7 +93,50 @@ Declaring Money (MYR) with GST amount.
 
 ```php
 use Duit\MYR;
+use Duit\Taxable\Gst\ZeroRate;
+use Duit\Taxable\Gst\StandardRate;
 
-$money = MYR::afterGst(530);
+$money = MYR::afterGst(530); // always going to use 6%
+
+$money = MYR::afterTax(540, new StandardRate());
+$money = MYR::afterTax(540, new ZeroRate());
 ```
 
+
+### SST Declaration
+
+#### Without SST
+
+Declaring Money (MYR) without GST (Zero).
+
+```php
+use Duit\MYR;
+
+$money = new MYR(540);
+$money = MYR::given(540);
+$money = MYR::withoutTax(540);
+```
+
+#### Before SST
+
+Declaring Money (MYR) before SST is applied.
+
+```php
+use Duit\MYR;
+use Duit\Taxable\Sst;
+
+$money = MYR::beforeTax(530, new Sst());
+
+$money = MYR::given(530)->enableTax(new Sst());
+```
+
+#### After SST
+
+Declaring Money (MYR) with SST tax.
+
+```php
+use Duit\MYR;
+use Duit\Taxable\Sst;
+
+$money = MYR::afterTax(530, new Sst());
+```
