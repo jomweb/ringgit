@@ -29,6 +29,12 @@ assert($part2->equals(MYR::given(333)));
 assert($part3->equals(MYR::given(333)));
 ```
 
+* [Installation](#installation)
+* [Usages](#usages)
+    - [Taxes](#taxes)
+        + [GST](#gst)
+        + [SST](#sst)
+
 ## Installation
 
 To install through composer, simply put the following in your `composer.json` file:
@@ -51,9 +57,11 @@ Above installation can also be simplify by using the following command:
 
 ## Usages
 
-### GST Declaration
+### Taxes
 
-#### Without GST
+#### GST Declaration
+
+##### Without GST
 
 Declaring Money (MYR) without GST (Zero).
 
@@ -66,7 +74,7 @@ $money = MYR::withoutGst(540);
 $money = MYR::withoutTax(540);
 ```
 
-#### Before GST
+##### Before GST
 
 Declaring Money (MYR) before GST is applied.
 
@@ -87,7 +95,7 @@ $money = MYR::given(540)->enableTax(new StandardRate());
 $money = MYR::given(540)->enableTax(new ZeroRate());
 ```
 
-#### After GST
+##### After GST
 
 Declaring Money (MYR) with GST amount.
 
@@ -103,9 +111,9 @@ $money = MYR::afterTax(540, new ZeroRate());
 ```
 
 
-### SST Declaration
+#### SST Declaration
 
-#### Without SST
+##### Without SST
 
 Declaring Money (MYR) without GST (Zero).
 
@@ -117,7 +125,7 @@ $money = MYR::given(540);
 $money = MYR::withoutTax(540);
 ```
 
-#### Before SST
+##### Before SST
 
 Declaring Money (MYR) before SST is applied.
 
@@ -130,7 +138,7 @@ $money = MYR::beforeTax(530, new Sst());
 $money = MYR::given(530)->enableTax(new Sst());
 ```
 
-#### After SST
+##### After SST
 
 Declaring Money (MYR) with SST tax.
 
