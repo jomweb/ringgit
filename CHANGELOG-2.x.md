@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `jomweb/ringgit`.
 
+## 2.1.0
+
+Released: 2018-08-23
+
+### Changes
+
+* Allow `Duit\Taxable\Sst::$taxRate` to be configurable upon construction.
+
 ## 2.0.0
 
 Released: 2018-06-01
