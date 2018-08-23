@@ -3,6 +3,7 @@
 namespace Duit;
 
 use Money\Money;
+use InvalidArgumentException;
 
 abstract class Taxable implements Contracts\Taxable
 {
@@ -72,5 +73,21 @@ abstract class Taxable implements Contracts\Taxable
     public function taxRate(): float
     {
         return round($this->taxRate / 100, 2);
+    }
+
+    /**
+     * Validate tax rate.
+     *
+     * @param  int  $taxRate
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @return void
+     */
+    protected function validateTaxRate(int $taxRate): void
+    {
+        if ($taxRate < 0 || $taxRate > 100) {
+            throw new InvalidArgumentException('Tax rate should be between 0 and 100.');
+        }
     }
 }

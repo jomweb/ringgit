@@ -19,4 +19,16 @@ class Sst extends Taxable
      * @var int
      */
     protected $taxRate = 10;
+
+    /**
+     * Construct a new SST tax.
+     *
+     * @param int $taxRate
+     */
+    public function __construct(int $taxRate = 10)
+    {
+        $this->validateTaxRate($taxRate);
+
+        $this->taxRate = $taxRate;
+    }
 }
