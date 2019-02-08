@@ -177,12 +177,11 @@ class MYRTest extends TestCase
         $this->assertSame('2925', $money->add(new MYR(1500))->subtract(new MYR(550))->multiply(3)->divide(2)->getAmount());
     }
 
-    /**
-     * @test
-     * @expectedException \BadMethodCallException
-     */
+    /** @test */
     public function it_can_call_undefined_method()
     {
+        $this->expectException('BadMethodCallException');
+
         (new MYR(500))->foobar();
     }
 
