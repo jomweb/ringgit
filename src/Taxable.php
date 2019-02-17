@@ -72,7 +72,7 @@ abstract class Taxable implements Contracts\Taxable
      */
     public function taxRate(): float
     {
-        return round($this->taxRate / 100, 2);
+        return \round($this->taxRate / 100, 2);
     }
 
     /**

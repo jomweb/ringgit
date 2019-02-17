@@ -118,7 +118,7 @@ class MYR implements Contracts\Money, \JsonSerializable
      */
     public function __call(string $method, array $parameters)
     {
-        if (! method_exists($this->money, $method)) {
+        if (! \method_exists($this->money, $method)) {
             throw new BadMethodCallException("Method [{$method}] is not available.");
         }
 
@@ -127,8 +127,8 @@ class MYR implements Contracts\Money, \JsonSerializable
             'lessThan', 'lessThanOrEqual', 'greaterThanOrEqual', 'greaterThan',
         ];
 
-        if (in_array($method, $passthrough)) {
-            $first = array_shift($parameters);
+        if (\in_array($method, $passthrough)) {
+            $first = \array_shift($parameters);
 
             $resolved = $this->money->{$method}(
                 $this->resolveMoneyObject($first), ...$parameters
