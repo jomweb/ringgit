@@ -8,7 +8,6 @@ assignees: ''
 ---
 
 - Library Version: #.#.#
-- API Version: v#
 - PHP Version: #.#.#
 
 ### Description:
