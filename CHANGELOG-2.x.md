@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `jomweb/ringgit`.
 
+## 2.2.0
+
+Released: 2019-12-17
+
+### Changes
+
+* Remove PHP 7.1 support.
+
 ## 2.1.1
 
 Released: 2019-03-04
