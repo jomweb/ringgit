@@ -223,7 +223,7 @@ class MYR implements Contracts\Money, \JsonSerializable
             'tax_rate' => $this->hasTax() ? $this->taxable->taxRate() : null,
             'amount_with_tax' => $this->getAmountWithTax(),
             'cash_with_tax' => $this->getCashAmountWithTax(),
-            'currency' => $this->getCurrency(),
+            'currency' => $this->getCurrency()->jsonSerialize(),
         ];
     }
 }
