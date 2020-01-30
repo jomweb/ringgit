@@ -2,6 +2,18 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `jomweb/ringgit`.
 
+## 2.2.1
+
+Released: 2020-01-30
+
+### Changes
+
+* Update minimum `moneyphp/money` to `^3.3`.
+
+### Fixes
+
+* Fixes `isZero()`, `isNegative()` and `isPositive()` usage where the resolved value is not an instance of `Money`.
+
 ## 2.2.0
 
 Released: 2019-12-17
