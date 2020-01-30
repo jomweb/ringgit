@@ -165,6 +165,45 @@ class MYRTest extends TestCase
     }
 
     /** @test */
+    public function it_can_determine_is_negative()
+    {
+        $money = new MYR(-100);
+
+        $this->assertSame('-1.00', $money->amount());
+        $this->assertSame('-100', $money->getAmount());
+
+        $this->assertTrue($money->isNegative());
+        $this->assertFalse($money->isZero());
+        $this->assertFalse($money->isPositive());
+    }
+
+    /** @test */
+    public function it_can_determine_is_zero()
+    {
+        $money = new MYR(0);
+
+        $this->assertSame('0.00', $money->amount());
+        $this->assertSame('0', $money->getAmount());
+
+        $this->assertFalse($money->isNegative());
+        $this->assertTrue($money->isZero());
+        $this->assertFalse($money->isPositive());
+    }
+
+    /** @test */
+    public function it_can_determine_is_positive()
+    {
+        $money = new MYR(100);
+
+        $this->assertSame('1.00', $money->amount());
+        $this->assertSame('100', $money->getAmount());
+
+        $this->assertFalse($money->isNegative());
+        $this->assertFalse($money->isZero());
+        $this->assertTrue($money->isPositive());
+    }
+
+    /** @test */
     public function it_immutable_between_operation()
     {
         $money = new MYR(1000);

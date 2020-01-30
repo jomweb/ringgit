@@ -122,12 +122,12 @@ class MYR implements Contracts\Money, \JsonSerializable
             throw new BadMethodCallException("Method [{$method}] is not available.");
         }
 
-        $passthrough = [
+        $comparison = [
             'add', 'subtract', 'equals', 'isSameCurrency',
             'lessThan', 'lessThanOrEqual', 'greaterThanOrEqual', 'greaterThan',
         ];
 
-        if (\in_array($method, $passthrough)) {
+        if (\in_array($method, $comparison)) {
             $first = \array_shift($parameters);
 
             $resolved = $this->money->{$method}(
@@ -137,6 +137,8 @@ class MYR implements Contracts\Money, \JsonSerializable
             return $resolved instanceof Money
                     ? $this->newInstance($resolved)
                     : $resolved;
+        } elseif (\in_array($method, ['isZero', 'isPositive', 'isNegative'])) {
+            return $this->money->{$method}(...$parameters);
         }
 
         return $this->newInstance(
