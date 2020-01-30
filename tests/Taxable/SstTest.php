@@ -20,6 +20,25 @@ class SstTest extends TestCase
     }
 
     /** @test */
+    public function it_cant_be_lower_than_0_percent()
+    {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Tax rate should be between 0 and 100.');
+
+        new Sst(-1);
+    }
+
+
+    /** @test */
+    public function it_cant_be_higher_than_100_percent()
+    {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Tax rate should be between 0 and 100.');
+
+        new Sst(140);
+    }
+
+    /** @test */
     public function it_can_enable_sst_after_initiated()
     {
         $money = MYR::given(500);
