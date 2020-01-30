@@ -22,6 +22,14 @@ Released: 2019-12-17
 
 * Remove PHP 7.1 support.
 
+## 2.1.2
+
+Released: 2020-01-30
+
+### Fixes
+
+* Fixes `isZero()`, `isNegative()` and `isPositive()` usage where the resolved value is not an instance of `Money`.
+
 ## 2.1.1
 
 Released: 2019-03-04
