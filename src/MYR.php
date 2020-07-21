@@ -137,7 +137,11 @@ class MYR implements Contracts\Money, \JsonSerializable
             return $resolved instanceof Money
                     ? $this->newInstance($resolved)
                     : $resolved;
-        } elseif (\in_array($method, ['isZero', 'isPositive', 'isNegative', 'allocate'])) {
+        } elseif (\in_array($method, ['allocate'])) {
+            return \array_map(function ($money) {
+                return $this->newInstance($money);
+            }, $this->money->{$method}(...$parameters));
+        } elseif (\in_array($method, ['isZero', 'isPositive', 'isNegative'])) {
             return $this->money->{$method}(...$parameters);
         }
 
