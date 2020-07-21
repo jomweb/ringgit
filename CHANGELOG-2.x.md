@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `jomweb/ringgit`.
 
+## 2.2.2
+
+Released: 2020-07-21
+
+### Fixes
+
+* Fixes `allocate()` and `allocateTo()` usage where the resolved value is not an instance of `Money`.
+
 ## 2.2.1
 
 Released: 2020-01-30
