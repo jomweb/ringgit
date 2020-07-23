@@ -71,10 +71,6 @@ class MYR implements Contracts\Money, \JsonSerializable
             $value = $value['amount'];
         }
 
-        if (is_object($value) || is_array($value)) {
-            throw new InvalidArgumentException('Unable to parse invalid $value');
-        }
-
         return static::given(
             $parser->parse((string) $value, new Currency($currency))->getAmount()
         );

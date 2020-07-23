@@ -36,19 +36,6 @@ class MYRTest extends TestCase
     }
 
     /** @test */
-    public function it_cant_be_initiated_using_parse_from_invalid_encoded_myr()
-    {
-        $this->expectException('InvalidArgumentException');
-        $this->expectExceptionMessage('Unable to parse invalid $value');
-
-        $json = '{"amount":"2.50"}';
-        $money = MYR::parse(json_decode($json, true));
-
-        $this->assertSame('250', $money->getAmount());
-    }
-
-
-    /** @test */
     public function it_cant_be_initiated_using_parse_from_other_currency()
     {
         $this->expectException('InvalidArgumentException');
