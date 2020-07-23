@@ -76,7 +76,7 @@ class MYR implements Contracts\Money, \JsonSerializable
         }
 
         return static::given(
-            $parser->parse($value, new Currency($currency))->getAmount()
+            $parser->parse((string) $value, new Currency($currency))->getAmount()
         );
     }
 
