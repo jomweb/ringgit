@@ -63,10 +63,11 @@ class MYR implements Contracts\Money, \JsonSerializable
         $parser = new DecimalMoneyParser(new ISOCurrencies());
         $currency = 'MYR';
 
-        if (\is_array($value)
-            && isset($value['amount'])
-            && (isset($value['currency']) && $value['currency'] === 'MYR')
-        ) {
+        if (\is_array($value) && isset($value['amount']) && isset($value['currency'])) {
+            if ($value['currency'] !== 'MYR') {
+                throw new InvalidArgumentException("Unable to handle parsing {$value['currency']} currency");
+            }
+
             $value = $value['amount'];
         }
 

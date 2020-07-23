@@ -47,6 +47,20 @@ class MYRTest extends TestCase
         $this->assertSame('250', $money->getAmount());
     }
 
+
+    /** @test */
+    public function it_cant_be_initiated_using_parse_from_other_currency()
+    {
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unable to handle parsing USD currency');
+
+        $json = '{"amount":"2.50","currency":"USD"}';
+        $money = MYR::parse(json_decode($json, true));
+
+        $this->assertSame('250', $money->getAmount());
+    }
+
+
     /** @test */
     public function it_can_be_get_currency_information()
     {
