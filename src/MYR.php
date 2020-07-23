@@ -6,6 +6,7 @@ use Money\Money;
 use Money\Currency;
 use Money\MoneyFormatter;
 use BadMethodCallException;
+use InvalidArgumentException;
 use Money\Currencies\ISOCurrencies;
 use Money\Parser\DecimalMoneyParser;
 use Money\Formatter\DecimalMoneyFormatter;
@@ -53,16 +54,28 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Parse value as ringgit.
      *
-     * @param  string  $amount
+     * @param  string|array  $value
      *
      * @return static
      */
-    public static function parse(string $amount)
+    public static function parse($value)
     {
         $parser = new DecimalMoneyParser(new ISOCurrencies());
+        $currency = 'MYR';
+
+        if (\is_array($value)
+            && isset($value['amount'])
+            && (isset($value['currency']) && $value['currency'] === 'MYR')
+        ) {
+            $value = $value['amount'];
+        }
+
+        if (is_object($value) || is_array($value)) {
+            throw new InvalidArgumentException('Unable to parse invalid $value');
+        }
 
         return static::given(
-            $parser->parse($amount, new Currency('MYR'))->getAmount()
+            $parser->parse($value, new Currency($currency))->getAmount()
         );
     }
 
