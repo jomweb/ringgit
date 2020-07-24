@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `jomweb/ringgit`.
 
+## 2.3.0
+
+Released: 2020-07-24
+
+### Changes
+
+* Allow `Duit\MYR::parse()` to handle `array` from json serialized instance.
+
 ## 2.2.2
 
 Released: 2020-07-21
