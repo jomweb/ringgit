@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `jomweb/ringgit`.
 
+## 2.3.1
+
+Released: 2020-11-15
+
+### Fixes
+
+* Fixes typehint on `Duit\Concerns\Tax`.
+
 ## 2.3.0
 
 Released: 2020-07-24
