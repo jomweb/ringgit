@@ -204,7 +204,7 @@ trait Tax
      *
      * @return \Duit\Contracts\Taxable|null
      */
-    abstract public function getTax(): ?Contracts\Taxable;
+    abstract public function getTax(): ?Taxable;
 
     /**
      * Get the money object.
