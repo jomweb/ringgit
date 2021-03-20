@@ -25,6 +25,8 @@ abstract class Taxable implements Contracts\Taxable
      * Get tax percentage.
      *
      * @param \Money\Money $money
+     *
+     * @return string
      */
     public function getAmountWithoutTax(Money $money): string
     {

@@ -117,7 +117,7 @@ class MYR implements Contracts\Money, \JsonSerializable
     }
 
     /**
-     * Passthrough method call to Money\Money.
+     * Passthroughs method call to Money\Money.
      *
      * @param  string  $method
      * @param  array  $parameters
