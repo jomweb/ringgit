@@ -30,7 +30,7 @@ abstract class Taxable implements Contracts\Taxable
      */
     public function getAmountWithoutTax(Money $money): string
     {
-        return $money->divide(1 + $this->taxRate())->getAmount();
+        return $money->divide((string) (1 + $this->taxRate()))->getAmount();
     }
 
     /**
@@ -42,7 +42,7 @@ abstract class Taxable implements Contracts\Taxable
      */
     public function getAmountWithTax(Money $money): string
     {
-        return $money->multiply(1 + $this->taxRate())->getAmount();
+        return $money->multiply((string) (1 + $this->taxRate()))->getAmount();
     }
 
     /**
@@ -54,7 +54,7 @@ abstract class Taxable implements Contracts\Taxable
      */
     public function getTaxAmount(Money $money): string
     {
-        return $money->multiply($this->taxRate())->getAmount();
+        return $money->multiply((string) $this->taxRate())->getAmount();
     }
 
     /**
