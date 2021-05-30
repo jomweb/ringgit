@@ -22,8 +22,6 @@ class Sst extends Taxable
 
     /**
      * Construct a new SST tax.
-     *
-     * @param int $taxRate
      */
     public function __construct(int $taxRate = 10)
     {

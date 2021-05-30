@@ -22,8 +22,6 @@ abstract class Gst extends Taxable
 
     /**
      * Tax code.
-     *
-     * @return string
      */
     public function taxCode(): string
     {

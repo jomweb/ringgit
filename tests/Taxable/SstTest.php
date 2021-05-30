@@ -28,7 +28,6 @@ class SstTest extends TestCase
         new Sst(-1);
     }
 
-
     /** @test */
     public function it_cant_be_higher_than_100_percent()
     {

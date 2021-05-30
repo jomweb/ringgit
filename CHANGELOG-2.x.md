@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `jomweb/ringgit`.
 
+## 2.4.0
+
+Released: 2021-05-30
+
+### Added
+
+* Added support for `moneyphp/money` version 4.
+
 ## 2.3.1
 
 Released: 2020-11-15

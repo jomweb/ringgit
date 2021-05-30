@@ -78,8 +78,6 @@ class MYR implements Contracts\Money, \JsonSerializable
 
     /**
      * Returns the value represented by this object.
-     *
-     * @return string
      */
     public function getAmount(): string
     {
@@ -88,8 +86,6 @@ class MYR implements Contracts\Money, \JsonSerializable
 
     /**
      * Get the money currency.
-     *
-     * @return \Money\Currency
      */
     public function getCurrency(): Currency
     {
@@ -98,8 +94,6 @@ class MYR implements Contracts\Money, \JsonSerializable
 
     /**
      * Get the money implementation.
-     *
-     * @return \Money\Money
      */
     public function getMoney(): Money
     {
@@ -119,16 +113,13 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Passthroughs method call to Money\Money.
      *
-     * @param  string  $method
-     * @param  array  $parameters
-     *
      * @throws \BadMethodException if method doesn't exist
      *
      * @return mixed
      */
     public function __call(string $method, array $parameters)
     {
-        if (! \method_exists($this->money, $method)) {
+        if (! method_exists($this->money, $method)) {
             throw new BadMethodCallException("Method [{$method}] is not available.");
         }
 
@@ -138,7 +129,7 @@ class MYR implements Contracts\Money, \JsonSerializable
         ];
 
         if (\in_array($method, $comparison)) {
-            $first = \array_shift($parameters);
+            $first = array_shift($parameters);
 
             $resolved = $this->money->{$method}(
                 $this->resolveMoneyObject($first), ...$parameters
@@ -148,7 +139,7 @@ class MYR implements Contracts\Money, \JsonSerializable
                     ? $this->newInstance($resolved)
                     : $resolved;
         } elseif (\in_array($method, ['allocate', 'allocateTo'])) {
-            return \array_map(function ($money) {
+            return array_map(function ($money) {
                 return $this->newInstance($money);
             }, $this->money->{$method}(...$parameters));
         } elseif (\in_array($method, ['isZero', 'isPositive', 'isNegative'])) {
@@ -164,8 +155,6 @@ class MYR implements Contracts\Money, \JsonSerializable
      * Build money object.
      *
      * @param  int|string  $amount
-     *
-     * @return \Money\Money
      */
     protected static function asMoney($amount): Money
     {
@@ -174,8 +163,6 @@ class MYR implements Contracts\Money, \JsonSerializable
 
     /**
      * Create new instance from money object.
-     *
-     * @param  \Money\Money  $money
      *
      * @return static
      */
@@ -188,8 +175,6 @@ class MYR implements Contracts\Money, \JsonSerializable
      * Resolve money object.
      *
      * @param  \Money\Money|Duit\Contracts\Money  $money
-     *
-     * @return \Money\Money
      */
     protected function resolveMoneyObject($money): Money
     {
@@ -198,8 +183,6 @@ class MYR implements Contracts\Money, \JsonSerializable
 
     /**
      * Get money formatter.
-     *
-     * @return \Money\MoneyFormatter
      */
     protected function getFormatter(): MoneyFormatter
     {
@@ -215,8 +198,6 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Set money formatter.
      *
-     * @param  \Money\MoneyFormatter  $formatter
-     *
      * @return void
      */
     public static function setFormatter(MoneyFormatter $formatter)
@@ -226,8 +207,6 @@ class MYR implements Contracts\Money, \JsonSerializable
 
     /**
      * {@inheritdoc}
-     *
-     * @return array
      */
     public function jsonSerialize(): array
     {

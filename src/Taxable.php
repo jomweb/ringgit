@@ -23,10 +23,6 @@ abstract class Taxable implements Contracts\Taxable
 
     /**
      * Get tax percentage.
-     *
-     * @param \Money\Money $money
-     *
-     * @return string
      */
     public function getAmountWithoutTax(Money $money): string
     {
@@ -35,10 +31,6 @@ abstract class Taxable implements Contracts\Taxable
 
     /**
      * Get tax percentage.
-     *
-     * @param \Money\Money $money
-     *
-     * @return string
      */
     public function getAmountWithTax(Money $money): string
     {
@@ -47,10 +39,6 @@ abstract class Taxable implements Contracts\Taxable
 
     /**
      * Get tax percentage.
-     *
-     * @param \Money\Money $money
-     *
-     * @return string
      */
     public function getTaxAmount(Money $money): string
     {
@@ -59,8 +47,6 @@ abstract class Taxable implements Contracts\Taxable
 
     /**
      * Tax code.
-     *
-     * @return string|null
      */
     public function taxCode(): ?string
     {
@@ -69,22 +55,16 @@ abstract class Taxable implements Contracts\Taxable
 
     /**
      * Tax percentage.
-     *
-     * @return float
      */
     public function taxRate(): float
     {
-        return \round($this->taxRate / 100, 2);
+        return round($this->taxRate / 100, 2);
     }
 
     /**
      * Validate tax rate.
      *
-     * @param  int  $taxRate
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return void
      */
     protected function validateTaxRate(int $taxRate): void
     {

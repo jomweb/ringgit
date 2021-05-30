@@ -47,7 +47,6 @@ class MYRTest extends TestCase
         $this->assertSame('250', $money->getAmount());
     }
 
-
     /** @test */
     public function it_can_be_get_currency_information()
     {

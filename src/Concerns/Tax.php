@@ -59,8 +59,6 @@ trait Tax
 
     /**
      * Get formatted amount with GST.
-     *
-     * @return string
      */
     public function amountWithTax(): string
     {
@@ -71,8 +69,6 @@ trait Tax
 
     /**
      * Get formatted cash with GST.
-     *
-     * @return string
      */
     public function cashAmountWithTax(): string
     {
@@ -107,8 +103,6 @@ trait Tax
 
     /**
      * Check if the object has Tax.
-     *
-     * @return bool
      */
     final public function hasTax(): bool
     {
@@ -117,8 +111,6 @@ trait Tax
 
     /**
      * Get GST amount.
-     *
-     * @return string
      */
     public function getTaxAmount(): string
     {
@@ -131,8 +123,6 @@ trait Tax
 
     /**
      * Returns the value represented by this object with Tax.
-     *
-     * @return string
      */
     public function getAmountWithTax(): string
     {
@@ -145,8 +135,6 @@ trait Tax
 
     /**
      * Get amount for cash with Tax.
-     *
-     * @return string
      */
     public function getCashAmountWithTax(): string
     {
@@ -157,8 +145,6 @@ trait Tax
 
     /**
      * Allocate the money according to a list of ratios with Tax.
-     *
-     * @param  array  $ratios
      *
      * @return Money[]
      */
@@ -178,8 +164,6 @@ trait Tax
 
     /**
      * Allocate the money among N targets with GST.
-     *
-     * @param  int  $n
      *
      * @throws \InvalidArgumentException If number of targets is not an integer
      *
@@ -201,15 +185,11 @@ trait Tax
 
     /**
      * Get applied tax.
-     *
-     * @return \Duit\Contracts\Taxable|null
      */
     abstract public function getTax(): ?Taxable;
 
     /**
      * Get the money object.
-     *
-     * @return \Money\Money
      */
     abstract public function getMoney(): Money;
 
@@ -217,15 +197,11 @@ trait Tax
      * Build money object.
      *
      * @param  int|string  $amount
-     *
-     * @return \Money\Money
      */
     abstract protected static function asMoney($amount): Money;
 
     /**
      * Get money formatter.
-     *
-     * @return \Money\MoneyFormatter
      */
     abstract protected function getFormatter(): MoneyFormatter;
 }
