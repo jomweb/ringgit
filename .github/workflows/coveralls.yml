@@ -13,7 +13,7 @@ jobs:
         os:
           - "ubuntu-latest"
         php:
-          - "8.0"
+          - "7.4"
         dependencies:
           - "locked"
         experimental:
