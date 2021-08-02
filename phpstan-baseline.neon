@@ -1,0 +1,7 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$amount of class Money\\\\Money constructor expects int\\|\\(string&numeric\\), int\\|string given\\.$#"
+			count: 1
+			path: src/MYR.php
+

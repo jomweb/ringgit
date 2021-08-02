@@ -39,10 +39,11 @@ trait Cash
      * Get closest accepted cash amount.
      *
      * @param  int|string  $amount
+     * @return float|string
      */
-    protected function getClosestAcceptedCashAmount($amount): int
+    protected function getClosestAcceptedCashAmount($amount)
     {
-        $value = Number::fromString($amount)->getIntegerPart();
+        $value = Number::fromString((string) $amount)->getIntegerPart();
         $cent = $amount % 5;
 
         if ($cent <= 2) {

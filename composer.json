@@ -19,6 +19,7 @@
         "moneyphp/money": "^3.3 || ^4.0"
     },
     "require-dev": {
+        "phpstan/phpstan": "^0.12.90",
         "phpunit/phpunit": "^8.4 || ^9.3.3 || ^10.0"
     },
     "config": {

@@ -21,7 +21,7 @@ trait Tax
      * Make object with Tax.
      *
      * @param int|string $amount
-     * @param \Duit\Concerns\Taxable $taxable
+     * @param \Duit\Contracts\Taxable $taxable
      *
      * @return static
      */
@@ -36,7 +36,7 @@ trait Tax
      * Make object before applying Tax.
      *
      * @param int|string $amount
-     * @param \Duit\Concerns\Taxable $taxable
+     * @param \Duit\Contracts\Taxable $taxable
      *
      * @return static
      */
@@ -114,11 +114,11 @@ trait Tax
      */
     public function getTaxAmount(): string
     {
-        if (! $this->hasTax()) {
+        if (is_null($this->taxable)) {
             return '0';
         }
 
-        return $this->getTax()->getTaxAmount($this->getMoney());
+        return $this->taxable->getTaxAmount($this->getMoney());
     }
 
     /**
@@ -126,11 +126,11 @@ trait Tax
      */
     public function getAmountWithTax(): string
     {
-        if (! $this->hasTax()) {
+        if (is_null($this->taxable)) {
             return $this->getMoney()->getAmount();
         }
 
-        return $this->getTax()->getAmountWithTax($this->getMoney());
+        return $this->taxable->getAmountWithTax($this->getMoney());
     }
 
     /**
@@ -165,6 +165,7 @@ trait Tax
     /**
      * Allocate the money among N targets with GST.
      *
+     * @param int<1, max> $n
      * @throws \InvalidArgumentException If number of targets is not an integer
      *
      * @return Money[]

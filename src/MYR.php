@@ -25,7 +25,7 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Money formatter.
      *
-     * @var \Money\Formatter\IntlMoneyFormatter
+     * @var \Money\MoneyFormatter
      */
     protected static $formatter;
 
@@ -113,7 +113,7 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Passthroughs method call to Money\Money.
      *
-     * @throws \BadMethodException if method doesn't exist
+     * @throws \BadMethodCallException if method doesn't exist
      *
      * @return mixed
      */
@@ -174,7 +174,7 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Resolve money object.
      *
-     * @param  \Money\Money|Duit\Contracts\Money  $money
+     * @param  \Money\Money|\Duit\Contracts\Money  $money
      */
     protected function resolveMoneyObject($money): Money
     {
@@ -214,8 +214,8 @@ class MYR implements Contracts\Money, \JsonSerializable
             'amount' => $this->getAmount(),
             'cash' => $this->getCashAmount(),
             'tax' => $this->getTaxAmount(),
-            'tax_code' => $this->hasTax() ? $this->taxable->taxCode() : null,
-            'tax_rate' => $this->hasTax() ? $this->taxable->taxRate() : null,
+            'tax_code' => ! is_null($this->taxable) ? $this->taxable->taxCode() : null,
+            'tax_rate' => ! is_null($this->taxable) ? $this->taxable->taxRate() : null,
             'amount_with_tax' => $this->getAmountWithTax(),
             'cash_with_tax' => $this->getCashAmountWithTax(),
             'currency' => $this->getCurrency()->jsonSerialize(),
