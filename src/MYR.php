@@ -131,6 +131,7 @@ class MYR implements Contracts\Money, \JsonSerializable
         if (\in_array($method, $comparison)) {
             $first = array_shift($parameters);
 
+            /** @var \Money\Money|mixed $resolved */
             $resolved = $this->money->{$method}(
                 $this->resolveMoneyObject($first), ...$parameters
             );
