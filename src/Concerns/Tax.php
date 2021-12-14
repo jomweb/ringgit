@@ -59,8 +59,8 @@ trait Tax
 
     /**
      * Get formatted amount with GST.
-     * 
-     * @return numeric-string
+     *
+     * @return numeric-string|non-empty-string
      */
     public function amountWithTax(): string
     {
@@ -71,8 +71,8 @@ trait Tax
 
     /**
      * Get formatted cash with GST.
-     * 
-     * @return numeric-string
+     *
+     * @return numeric-string|non-empty-string
      */
     public function cashAmountWithTax(): string
     {
@@ -115,7 +115,7 @@ trait Tax
 
     /**
      * Get GST amount.
-     * 
+     *
      * @return numeric-string
      */
     public function getTaxAmount(): string
@@ -129,7 +129,7 @@ trait Tax
 
     /**
      * Returns the value represented by this object with Tax.
-     * 
+     *
      * @return numeric-string
      */
     public function getAmountWithTax(): string
@@ -143,7 +143,7 @@ trait Tax
 
     /**
      * Get amount for cash with Tax.
-     * 
+     *
      * @return numeric-string
      */
     public function getCashAmountWithTax(): string

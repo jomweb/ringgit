@@ -1,17 +1,2 @@
-parameters:
-	ignoreErrors:
-		-
-			message: "#^Method Duit\\\\MYR\\:\\:getClosestAcceptedCashAmount\\(\\) should return int but returns float\\|int\\.$#"
-			count: 1
-			path: src/MYR.php
 
-		-
-			message: "#^Parameter \\#1 \\$amount of class Money\\\\Money constructor expects int\\|\\(string&numeric\\), int\\|string given\\.$#"
-			count: 1
-			path: src/MYR.php
-
-		-
-			message: "#^Parameter \\#1 \\$number of static method Money\\\\Number\\:\\:fromString\\(\\) expects string, int\\|string given\\.$#"
-			count: 1
-			path: src/MYR.php
 

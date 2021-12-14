@@ -9,8 +9,8 @@ trait Cash
 {
     /**
      * Get formatted amount.
-     * 
-     * @return numeric-string
+     *
+     * @return numeric-string|non-empty-string
      */
     public function amount(): string
     {
@@ -19,8 +19,8 @@ trait Cash
 
     /**
      * Get formatted cash.
-     * 
-     * @return numeric-string
+     *
+     * @return numeric-string|non-empty-string
      */
     public function cashAmount(): string
     {
@@ -31,7 +31,7 @@ trait Cash
 
     /**
      * Get amount for cash.
-     * 
+     *
      * @return numeric-string
      */
     public function getCashAmount(): string
@@ -48,7 +48,8 @@ trait Cash
      */
     protected function getClosestAcceptedCashAmount($amount): int
     {
-        $value = Number::fromString($amount)->getIntegerPart();
+        /** @var int $value */
+        $value = Number::fromString((string) $amount)->getIntegerPart();
         $cent = $amount % 5;
 
         if ($cent <= 2) {

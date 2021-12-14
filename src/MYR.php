@@ -78,7 +78,7 @@ class MYR implements Contracts\Money, \JsonSerializable
 
     /**
      * Returns the value represented by this object.
-     * 
+     *
      * @return numeric-string
      */
     public function getAmount(): string
@@ -157,7 +157,7 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Build money object.
      *
-     * @param  int|string  $amount
+     * @param  int|numeric-string  $amount
      */
     protected static function asMoney($amount): Money
     {
