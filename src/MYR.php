@@ -32,7 +32,7 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Construct a new MYR money.
      *
-     * @param int|string $amount
+     * @param int|numeric-string $amount
      */
     public function __construct($amount)
     {
@@ -42,7 +42,7 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Construct a new MYR money.
      *
-     * @param  int|string  $amount
+     * @param  int|numeric-string  $amount
      *
      * @return static
      */
@@ -54,7 +54,7 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Parse value as ringgit.
      *
-     * @param  string|array  $value
+     * @param  numeric-string|array  $value
      *
      * @return static
      */
@@ -78,6 +78,8 @@ class MYR implements Contracts\Money, \JsonSerializable
 
     /**
      * Returns the value represented by this object.
+     * 
+     * @return numeric-string
      */
     public function getAmount(): string
     {

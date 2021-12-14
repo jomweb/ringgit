@@ -6,6 +6,8 @@ interface Money
 {
     /**
      * Returns the value represented by this object.
+     * 
+     * @return numeric-string
      */
     public function getAmount(): string;
 

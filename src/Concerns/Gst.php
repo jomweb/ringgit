@@ -12,7 +12,7 @@ trait Gst
     /**
      * Make object with GST.
      *
-     * @param int|string $amount
+     * @param int|numeric-string $amount
      *
      * @return static
      */
@@ -24,7 +24,7 @@ trait Gst
     /**
      * Make object before applying GST.
      *
-     * @param int|string $amount
+     * @param int|numeric-string $amount
      *
      * @return static
      */
@@ -36,7 +36,7 @@ trait Gst
     /**
      * Make object without GST.
      *
-     * @param int|string $amount
+     * @param int|numeric-string $amount
      *
      * @return static
      */

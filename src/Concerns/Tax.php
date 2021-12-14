@@ -20,7 +20,7 @@ trait Tax
     /**
      * Make object with Tax.
      *
-     * @param int|string $amount
+     * @param int|numeric-string $amount
      * @param \Duit\Contracts\Taxable $taxable
      *
      * @return static
@@ -35,7 +35,7 @@ trait Tax
     /**
      * Make object before applying Tax.
      *
-     * @param int|string $amount
+     * @param int|numeric-string $amount
      * @param \Duit\Contracts\Taxable $taxable
      *
      * @return static
@@ -48,7 +48,7 @@ trait Tax
     /**
      * Make object without Tax.
      *
-     * @param int|string $amount
+     * @param int|numeric-string $amount
      *
      * @return static
      */
@@ -59,6 +59,8 @@ trait Tax
 
     /**
      * Get formatted amount with GST.
+     * 
+     * @return numeric-string
      */
     public function amountWithTax(): string
     {
@@ -69,6 +71,8 @@ trait Tax
 
     /**
      * Get formatted cash with GST.
+     * 
+     * @return numeric-string
      */
     public function cashAmountWithTax(): string
     {
@@ -111,6 +115,8 @@ trait Tax
 
     /**
      * Get GST amount.
+     * 
+     * @return numeric-string
      */
     public function getTaxAmount(): string
     {
@@ -123,6 +129,8 @@ trait Tax
 
     /**
      * Returns the value represented by this object with Tax.
+     * 
+     * @return numeric-string
      */
     public function getAmountWithTax(): string
     {
@@ -135,6 +143,8 @@ trait Tax
 
     /**
      * Get amount for cash with Tax.
+     * 
+     * @return numeric-string
      */
     public function getCashAmountWithTax(): string
     {
@@ -146,7 +156,7 @@ trait Tax
     /**
      * Allocate the money according to a list of ratios with Tax.
      *
-     * @return Money[]
+     * @return array<int, \Money\Money>
      */
     public function allocateWithTax(array $ratios): array
     {
@@ -168,7 +178,7 @@ trait Tax
      * @param int<1, max> $n
      * @throws \InvalidArgumentException If number of targets is not an integer
      *
-     * @return Money[]
+     * @return array<int, \Money\Money>
      */
     public function allocateWithTaxTo(int $n): array
     {
@@ -197,7 +207,7 @@ trait Tax
     /**
      * Build money object.
      *
-     * @param  int|string  $amount
+     * @param  int|numeric-string  $amount
      */
     abstract protected static function asMoney($amount): Money;
 

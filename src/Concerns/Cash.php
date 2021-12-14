@@ -9,6 +9,8 @@ trait Cash
 {
     /**
      * Get formatted amount.
+     * 
+     * @return numeric-string
      */
     public function amount(): string
     {
@@ -17,6 +19,8 @@ trait Cash
 
     /**
      * Get formatted cash.
+     * 
+     * @return numeric-string
      */
     public function cashAmount(): string
     {
@@ -27,6 +31,8 @@ trait Cash
 
     /**
      * Get amount for cash.
+     * 
+     * @return numeric-string
      */
     public function getCashAmount(): string
     {
@@ -38,7 +44,7 @@ trait Cash
     /**
      * Get closest accepted cash amount.
      *
-     * @param  int|string  $amount
+     * @param  int|numeric-string  $amount
      */
     protected function getClosestAcceptedCashAmount($amount): int
     {
