@@ -156,7 +156,10 @@ trait Tax
     /**
      * Allocate the money according to a list of ratios with Tax.
      *
+     * @param  array<int, float|int>  $ratios
      * @return array<int, \Money\Money>
+     *
+     * @phpstan-param non-empty-array<int, float|int>  $ratios
      */
     public function allocateWithTax(array $ratios): array
     {
