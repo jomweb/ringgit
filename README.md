@@ -8,7 +8,7 @@ Malaysia Ringgit implementation on top of Money PHP
 [![License](https://poser.pugx.org/jomweb/ringgit/license)](https://packagist.org/packages/jomweb/ringgit)
 [![Coverage Status](https://coveralls.io/repos/github/jomweb/ringgit/badge.svg?branch=3.x)](https://coveralls.io/github/jomweb/ringgit?branch=3.x)
 
-PHP 7.1+ library to make working with money safer, easier, and fun for Malaysia Ringgit!
+PHP 8.0+ library to make working with money safer, easier, and fun for Malaysia Ringgit!
 
 > "If I had a dime for every time I've seen someone use FLOAT to store currency, I'd have $999.997634" -- [Bill Karwin](https://twitter.com/billkarwin/status/347561901460447232)
 
