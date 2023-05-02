@@ -2,10 +2,10 @@
 
 namespace Duit\Tests\Taxable;
 
-use Duit\Taxable\Gst;
 use Duit\Contracts\Taxable;
-use PHPUnit\Framework\TestCase;
+use Duit\Taxable\Gst;
 use Duit\Taxable\Gst\StandardRate;
+use PHPUnit\Framework\TestCase;
 
 class StandardRateTest extends TestCase
 {

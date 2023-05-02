@@ -2,8 +2,8 @@
 
 namespace Duit\Tests\Taxable;
 
-use Duit\Taxable\Gst;
 use Duit\Contracts\Taxable;
+use Duit\Taxable\Gst;
 use Duit\Taxable\Gst\ZeroRate;
 use PHPUnit\Framework\TestCase;
 

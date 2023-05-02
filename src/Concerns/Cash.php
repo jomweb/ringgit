@@ -2,8 +2,8 @@
 
 namespace Duit\Concerns;
 
-use Money\Number;
 use Money\MoneyFormatter;
+use Money\Number;
 
 trait Cash
 {

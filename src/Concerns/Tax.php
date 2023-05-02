@@ -2,9 +2,9 @@
 
 namespace Duit\Concerns;
 
+use Duit\Contracts\Taxable;
 use Money\Money;
 use Money\MoneyFormatter;
-use Duit\Contracts\Taxable;
 
 trait Tax
 {
@@ -20,9 +20,7 @@ trait Tax
     /**
      * Make object with Tax.
      *
-     * @param int|numeric-string $amount
-     * @param \Duit\Contracts\Taxable $taxable
-     *
+     * @param  int|numeric-string  $amount
      * @return static
      */
     public static function afterTax($amount, Taxable $taxable)
@@ -35,9 +33,7 @@ trait Tax
     /**
      * Make object before applying Tax.
      *
-     * @param int|numeric-string $amount
-     * @param \Duit\Contracts\Taxable $taxable
-     *
+     * @param  int|numeric-string  $amount
      * @return static
      */
     public static function beforeTax($amount, Taxable $taxable)
@@ -48,8 +44,7 @@ trait Tax
     /**
      * Make object without Tax.
      *
-     * @param int|numeric-string $amount
-     *
+     * @param  int|numeric-string  $amount
      * @return static
      */
     public static function withoutTax($amount)
@@ -178,10 +173,10 @@ trait Tax
     /**
      * Allocate the money among N targets with GST.
      *
-     * @param int<1, max> $n
-     * @throws \InvalidArgumentException If number of targets is not an integer
-     *
+     * @param  int<1, max>  $n
      * @return array<int, \Money\Money>
+     *
+     * @throws \InvalidArgumentException If number of targets is not an integer
      */
     public function allocateWithTaxTo(int $n): array
     {

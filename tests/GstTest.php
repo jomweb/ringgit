@@ -3,9 +3,9 @@
 namespace Duit\Tests;
 
 use Duit\MYR;
+use Duit\Taxable\Gst\StandardRate;
 use Duit\Taxable\Gst\ZeroRate;
 use PHPUnit\Framework\TestCase;
-use Duit\Taxable\Gst\StandardRate;
 
 class GstTest extends TestCase
 {

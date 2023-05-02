@@ -2,8 +2,8 @@
 
 namespace Duit;
 
-use Money\Money;
 use InvalidArgumentException;
+use Money\Money;
 
 abstract class Taxable implements Contracts\Taxable
 {
@@ -23,7 +23,7 @@ abstract class Taxable implements Contracts\Taxable
 
     /**
      * Get tax percentage.
-     * 
+     *
      * @return numeric-string
      */
     public function getAmountWithoutTax(Money $money): string
@@ -33,7 +33,7 @@ abstract class Taxable implements Contracts\Taxable
 
     /**
      * Get tax percentage.
-     * 
+     *
      * @return numeric-string
      */
     public function getAmountWithTax(Money $money): string
@@ -43,7 +43,7 @@ abstract class Taxable implements Contracts\Taxable
 
     /**
      * Get tax percentage.
-     * 
+     *
      * @return numeric-string
      */
     public function getTaxAmount(Money $money): string

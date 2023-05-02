@@ -2,8 +2,8 @@
 
 namespace Duit\Concerns;
 
-use Duit\Taxable\Gst\ZeroRate;
 use Duit\Taxable\Gst\StandardRate;
+use Duit\Taxable\Gst\ZeroRate;
 
 trait Gst
 {
@@ -12,8 +12,7 @@ trait Gst
     /**
      * Make object with GST.
      *
-     * @param int|numeric-string $amount
-     *
+     * @param  int|numeric-string  $amount
      * @return static
      */
     public static function afterGst($amount)
@@ -24,8 +23,7 @@ trait Gst
     /**
      * Make object before applying GST.
      *
-     * @param int|numeric-string $amount
-     *
+     * @param  int|numeric-string  $amount
      * @return static
      */
     public static function beforeGst($amount)
@@ -36,8 +34,7 @@ trait Gst
     /**
      * Make object without GST.
      *
-     * @param int|numeric-string $amount
-     *
+     * @param  int|numeric-string  $amount
      * @return static
      */
     public static function withoutGst($amount)

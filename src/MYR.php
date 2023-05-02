@@ -2,14 +2,14 @@
 
 namespace Duit;
 
-use Money\Money;
-use Money\Currency;
-use Money\MoneyFormatter;
 use BadMethodCallException;
 use InvalidArgumentException;
 use Money\Currencies\ISOCurrencies;
-use Money\Parser\DecimalMoneyParser;
+use Money\Currency;
 use Money\Formatter\DecimalMoneyFormatter;
+use Money\Money;
+use Money\MoneyFormatter;
+use Money\Parser\DecimalMoneyParser;
 
 class MYR implements Contracts\Money, \JsonSerializable
 {
@@ -32,7 +32,7 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Construct a new MYR money.
      *
-     * @param int|numeric-string $amount
+     * @param  int|numeric-string  $amount
      */
     public function __construct($amount)
     {
@@ -43,7 +43,6 @@ class MYR implements Contracts\Money, \JsonSerializable
      * Construct a new MYR money.
      *
      * @param  int|numeric-string  $amount
-     *
      * @return static
      */
     public static function given($amount)
@@ -55,7 +54,6 @@ class MYR implements Contracts\Money, \JsonSerializable
      * Parse value as ringgit.
      *
      * @param  numeric-string|array  $value
-     *
      * @return static
      */
     public static function parse($value)
@@ -115,9 +113,9 @@ class MYR implements Contracts\Money, \JsonSerializable
     /**
      * Passthroughs method call to Money\Money.
      *
-     * @throws \BadMethodCallException if method doesn't exist
-     *
      * @return mixed
+     *
+     * @throws \BadMethodCallException if method doesn't exist
      */
     public function __call(string $method, array $parameters)
     {
