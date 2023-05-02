@@ -1,12 +1,12 @@
 Malaysia Ringgit implementation on top of Money PHP
 ==============
 
-[![tests](https://github.com/jomweb/ringgit/workflows/tests/badge.svg?branch=2.x)](https://github.com/jomweb/ringgit/actions?query=workflow%3Atests+branch%3A2.x)
+[![tests](https://github.com/jomweb/ringgit/workflows/tests/badge.svg?branch=3.x)](https://github.com/jomweb/ringgit/actions?query=workflow%3Atests+branch%3A3.x)
 [![Latest Stable Version](https://poser.pugx.org/jomweb/ringgit/v/stable)](https://packagist.org/packages/jomweb/ringgit)
 [![Total Downloads](https://poser.pugx.org/jomweb/ringgit/downloads)](https://packagist.org/packages/jomweb/ringgit)
 [![Latest Unstable Version](https://poser.pugx.org/jomweb/ringgit/v/unstable)](https://packagist.org/packages/jomweb/ringgit)
 [![License](https://poser.pugx.org/jomweb/ringgit/license)](https://packagist.org/packages/jomweb/ringgit)
-[![Coverage Status](https://coveralls.io/repos/github/jomweb/ringgit/badge.svg?branch=master)](https://coveralls.io/github/jomweb/ringgit?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/jomweb/ringgit/badge.svg?branch=3.x)](https://coveralls.io/github/jomweb/ringgit?branch=3.x)
 
 PHP 7.1+ library to make working with money safer, easier, and fun for Malaysia Ringgit!
 
